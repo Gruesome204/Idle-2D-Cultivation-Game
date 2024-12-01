@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd288effbf4023447ae6ee0aa161cde3, type: 3}
+  m_Name: PointAndClick
+  m_EditorClassIdentifier: 
+  skillName: PointAndClick
+  description: 
+  manaCost: 1
+  cooldown: 1
+  damageAmount: 2
+  healingAmount: 0
+  gameDataSO: {fileID: 11400000, guid: 29a3e50ca4fb86f46a8fdcfd7337911c, type: 2}
+  mousePosition: {x: 0, y: 0, z: 0}
+  ShootProjectilePrefab: {fileID: 8039648206436084130, guid: 09b998da70f6eb04dbbc2d94a7b3acd6, type: 3}
