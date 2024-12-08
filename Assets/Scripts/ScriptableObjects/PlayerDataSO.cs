@@ -22,6 +22,7 @@ public class PlayerDataSO : ScriptableObject
     [Header("Realm & Level(1-9)")]
     [SerializeField] private Realms PlayerRealm;
     [SerializeField] public int PlayerRealmLevel;
+
     //player needs enough of tribulation energy to breakthrough to the next major realm..
     [SerializeField] public int currentTribulationEnergy;
 
@@ -35,6 +36,7 @@ public class PlayerDataSO : ScriptableObject
     [Header("Stats")]
     //exp of player
     [SerializeField] public float currentSpiritualEnergy;
+    [SerializeField] public float energyPerSecond;
     [SerializeField] public int spiritualEnergyToNextLevel;
 
 

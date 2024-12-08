@@ -32,7 +32,6 @@ public class PlayerCharakter : MonoBehaviour
     private void InitializeAdditionalChangeStats()
     {
         playerDataSO.maxHealth = playerDataSO.characterClass.baseHealth + (int)playerDataSO.currentSpiritualEnergy * playerDataSO.characterClass.healthPerLevel + (playerDataSO.equippedItem != null ? playerDataSO.equippedItem.bonusHealth : 0) + (playerDataSO.cultivationTechnique != null ? playerDataSO.cultivationTechnique.bonusHealth : 0);
-        playerDataSO.currentHealth = playerDataSO.maxHealth;
         playerDataSO.currentAttack = playerDataSO.characterClass.baseAttack + (int)playerDataSO.currentSpiritualEnergy * playerDataSO.characterClass.attackPerLevel + (playerDataSO.equippedItem != null ? playerDataSO.equippedItem.bonusAttack : 0) + (playerDataSO.cultivationTechnique != null ? playerDataSO.cultivationTechnique.bonusAttack : 0);
         playerDataSO.currentDefense = playerDataSO.characterClass.baseDefense + (int)playerDataSO.currentSpiritualEnergy * playerDataSO.characterClass.defensePerLevel + (playerDataSO.equippedItem != null ? playerDataSO.equippedItem.bonusDefense : 0) + (playerDataSO.cultivationTechnique != null ? playerDataSO.cultivationTechnique.bonusDefense : 0);
         playerDataSO.currentAttackSpeed = playerDataSO.characterClass.attackSpeed + (playerDataSO.cultivationTechnique != null ? playerDataSO.cultivationTechnique.bonusAttackspeed : 0);
@@ -86,36 +85,32 @@ public class PlayerCharakter : MonoBehaviour
             playerDataSO.currentHealth = playerDataSO.maxHealth;
         }
     }
-    public void AddExperience(int xp)
+    public void AddExperience()
     {
-        playerDataSO.currentSpiritualEnergy += xp;
-        if (playerDataSO.currentSpiritualEnergy >= playerDataSO.spiritualEnergyToNextLevel)
+        playerDataSO.currentSpiritualEnergy += playerDataSO.energyPerSecond * Time.deltaTime;
+        if(playerDataSO.currentSpiritualEnergy >= playerDataSO.spiritualEnergyToNextLevel)
         {
             LevelUp();
         }
     }
 
-    private int ExperienceToNextLevel()
+    private void UpdateExperienceToNextLevel()
     {
-        return (int)playerDataSO.currentSpiritualEnergy * 100; // Simple formula; modify as needed
+        playerDataSO.spiritualEnergyToNextLevel = playerDataSO.PlayerRealmLevel * 100;
     }
 
     private void LevelUp()
     {
-        playerDataSO.currentSpiritualEnergy -= ExperienceToNextLevel();
-        playerDataSO.currentSpiritualEnergy++;
-        InitializeInitialStats();
+        playerDataSO.currentSpiritualEnergy -= playerDataSO.spiritualEnergyToNextLevel;
+        InitializeAdditionalChangeStats();
+        UpdateExperienceToNextLevel();
         Debug.Log($"{playerDataSO.characterClass.className} leveled up to level {playerDataSO.currentSpiritualEnergy}!");
     }
-    private IEnumerator AddQi()
-    {
-        yield return new WaitForSeconds(1f);
-        //code here will execute after 5 seconds
-        playerDataSO.currentSpiritualEnergy =+1;
-    }
+
     private void Update()
     {
-        StartCoroutine(AddQi());
+        AddExperience();
+
             if (Input.GetKeyDown(KeyCode.Q))
         {
             UseSkill(playerDataSO.characterClass.skills[0]);

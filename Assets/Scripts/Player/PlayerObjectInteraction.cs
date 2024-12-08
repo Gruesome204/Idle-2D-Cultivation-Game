@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 
-public class GrabObjects : MonoBehaviour
+public class PlayerObjectInteraction : MonoBehaviour
 {
 
     [SerializeField] private Transform grabPoint;
@@ -20,9 +19,25 @@ public class GrabObjects : MonoBehaviour
         IsGrabbed = false;
     }
 
-    private void Update()
-    {
 
+
+    void Update()
+    {
+           
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            var hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity);
+
+            if (hit)
+            {
+                InteractWithObject(hit.collider.gameObject);
+            }
+        }
+
+
+
+        //Grab an Object
         RaycastHit2D hitInfo = Physics2D.Raycast(rayPoint.position, transform.right, rayDistance);
 
         if (hitInfo.collider != null && hitInfo.collider.gameObject.layer == 6)
@@ -33,7 +48,7 @@ public class GrabObjects : MonoBehaviour
                 grabbedObject.transform.SetParent(playerCharacter.transform);
                 IsGrabbed = true;
                 Debug.Log("Grab Object");
-            } 
+            }
             else if (Input.GetKeyDown(KeyCode.Space) && IsGrabbed == true)
             {
                 grabbedObject.transform.SetParent(null);
@@ -45,4 +60,13 @@ public class GrabObjects : MonoBehaviour
         }
         Debug.DrawRay(rayPoint.position, transform.right * rayDistance);
     }
+
+    void InteractWithObject(GameObject objectToInteractWith)
+    {
+        if (objectToInteractWith.TryGetComponent(out IClickable clickableObject))
+        {
+            clickableObject.Interact();
+        }
+    }
 }
+
