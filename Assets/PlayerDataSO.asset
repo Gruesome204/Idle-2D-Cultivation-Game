@@ -20,20 +20,20 @@ MonoBehaviour:
   characterClass: {fileID: 11400000, guid: a035a3e2c22757844a5f4d6949e80647, type: 2}
   cultivationTechnique: {fileID: 0}
   cultivationTechniqueLevel: 0
-  equippedItem: {fileID: 11400000, guid: 7257047ec48cafc489a30fa2eae555b8, type: 2}
+  equippedItem: {fileID: 0}
   PlayerRealm: 0
   PlayerRealmLevel: 1
   currentTribulationEnergy: 0
   CultivationSpecialization: 0
   currentMoney: 0
-  currentSpiritualEnergy: 8.031403
+  currentSpiritualEnergy: 0
   energyPerSecond: 1
-  spiritualEnergyToNextLevel: 100
+  spiritualEnergyToNextLevel: 0
   currentInsight: 0
-  currentHealth: -24
-  maxHealth: 150
+  currentHealth: 0
+  maxHealth: 0
   titleBonus: 0
-  currentAttack: 5
-  currentDefense: 4
-  currentAttackSpeed: 1
+  currentAttack: 0
+  currentDefense: 0
+  currentAttackSpeed: 0
   currentGameState: 2

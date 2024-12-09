@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Idle-2D Cultivation Game.sln"
+    "dotnet.defaultSolution": "Idle-2D-Cultivation-Game.sln"
 }

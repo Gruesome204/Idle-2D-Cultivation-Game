@@ -9,7 +9,7 @@ public class PlayerCharakter : MonoBehaviour
 
     private void Start()
     {
-        if(playerDataSO.characterClass)
+        if(playerDataSO.characterClass != null)
         {
             InitializeInitialStats();
         }
@@ -22,18 +22,18 @@ public class PlayerCharakter : MonoBehaviour
 
     private void InitializeInitialStats()
     {
-        playerDataSO.maxHealth = playerDataSO.characterClass.baseHealth + (int)playerDataSO.currentSpiritualEnergy * playerDataSO.characterClass.healthPerLevel + (playerDataSO.equippedItem != null ? playerDataSO.equippedItem.bonusHealth : 0) + (playerDataSO.cultivationTechnique != null ? playerDataSO.cultivationTechnique.bonusHealth : 0);
+        playerDataSO.maxHealth = playerDataSO.characterClass.baseHealth + (int)playerDataSO.PlayerRealmLevel * playerDataSO.characterClass.healthPerLevel + (playerDataSO.equippedItem != null ? playerDataSO.equippedItem.bonusHealth : 0) + (playerDataSO.cultivationTechnique != null ? playerDataSO.cultivationTechnique.bonusHealth : 0);
         playerDataSO.currentHealth = playerDataSO.maxHealth;
-        playerDataSO.currentAttack = playerDataSO.characterClass.baseAttack + (int)playerDataSO.currentSpiritualEnergy * playerDataSO.characterClass.attackPerLevel + (playerDataSO.equippedItem != null ? playerDataSO.equippedItem.bonusAttack : 0) + (playerDataSO.cultivationTechnique != null ? playerDataSO.cultivationTechnique.bonusAttack : 0);
-        playerDataSO.currentDefense = playerDataSO.characterClass.baseDefense + (int)playerDataSO.currentSpiritualEnergy * playerDataSO.characterClass.defensePerLevel + (playerDataSO.equippedItem != null ? playerDataSO.equippedItem.bonusDefense : 0) + (playerDataSO.cultivationTechnique != null ? playerDataSO.cultivationTechnique.bonusDefense : 0);
+        playerDataSO.currentAttack = playerDataSO.characterClass.baseAttack + (int)playerDataSO.PlayerRealmLevel * playerDataSO.characterClass.attackPerLevel + (playerDataSO.equippedItem != null ? playerDataSO.equippedItem.bonusAttack : 0) + (playerDataSO.cultivationTechnique != null ? playerDataSO.cultivationTechnique.bonusAttack : 0);
+        playerDataSO.currentDefense = playerDataSO.characterClass.baseDefense + (int)playerDataSO.PlayerRealmLevel * playerDataSO.characterClass.defensePerLevel + (playerDataSO.equippedItem != null ? playerDataSO.equippedItem.bonusDefense : 0) + (playerDataSO.cultivationTechnique != null ? playerDataSO.cultivationTechnique.bonusDefense : 0);
         playerDataSO.currentAttackSpeed = playerDataSO.characterClass.attackSpeed + (playerDataSO.cultivationTechnique != null ? playerDataSO.cultivationTechnique.bonusAttackspeed : 0);
     }
 
     private void InitializeAdditionalChangeStats()
     {
-        playerDataSO.maxHealth = playerDataSO.characterClass.baseHealth + (int)playerDataSO.currentSpiritualEnergy * playerDataSO.characterClass.healthPerLevel + (playerDataSO.equippedItem != null ? playerDataSO.equippedItem.bonusHealth : 0) + (playerDataSO.cultivationTechnique != null ? playerDataSO.cultivationTechnique.bonusHealth : 0);
-        playerDataSO.currentAttack = playerDataSO.characterClass.baseAttack + (int)playerDataSO.currentSpiritualEnergy * playerDataSO.characterClass.attackPerLevel + (playerDataSO.equippedItem != null ? playerDataSO.equippedItem.bonusAttack : 0) + (playerDataSO.cultivationTechnique != null ? playerDataSO.cultivationTechnique.bonusAttack : 0);
-        playerDataSO.currentDefense = playerDataSO.characterClass.baseDefense + (int)playerDataSO.currentSpiritualEnergy * playerDataSO.characterClass.defensePerLevel + (playerDataSO.equippedItem != null ? playerDataSO.equippedItem.bonusDefense : 0) + (playerDataSO.cultivationTechnique != null ? playerDataSO.cultivationTechnique.bonusDefense : 0);
+        playerDataSO.maxHealth = playerDataSO.characterClass.baseHealth + (int)playerDataSO.PlayerRealmLevel * playerDataSO.characterClass.healthPerLevel + (playerDataSO.equippedItem != null ? playerDataSO.equippedItem.bonusHealth : 0) + (playerDataSO.cultivationTechnique != null ? playerDataSO.cultivationTechnique.bonusHealth : 0);
+        playerDataSO.currentAttack = playerDataSO.characterClass.baseAttack + (int)playerDataSO.PlayerRealmLevel * playerDataSO.characterClass.attackPerLevel + (playerDataSO.equippedItem != null ? playerDataSO.equippedItem.bonusAttack : 0) + (playerDataSO.cultivationTechnique != null ? playerDataSO.cultivationTechnique.bonusAttack : 0);
+        playerDataSO.currentDefense = playerDataSO.characterClass.baseDefense + (int)playerDataSO.PlayerRealmLevel * playerDataSO.characterClass.defensePerLevel + (playerDataSO.equippedItem != null ? playerDataSO.equippedItem.bonusDefense : 0) + (playerDataSO.cultivationTechnique != null ? playerDataSO.cultivationTechnique.bonusDefense : 0);
         playerDataSO.currentAttackSpeed = playerDataSO.characterClass.attackSpeed + (playerDataSO.cultivationTechnique != null ? playerDataSO.cultivationTechnique.bonusAttackspeed : 0);
     }
 
@@ -42,6 +42,7 @@ public class PlayerCharakter : MonoBehaviour
     public void ChangeCharakterClass(RPGClassAsset characterClass)
     {
         playerDataSO.characterClass = characterClass;
+          InitializeAdditionalChangeStats();
     }
 
     public void ChangeEquipedItem(RPGEquipmentAsset newItem)
@@ -96,12 +97,13 @@ public class PlayerCharakter : MonoBehaviour
 
     private void UpdateExperienceToNextLevel()
     {
-        playerDataSO.spiritualEnergyToNextLevel = playerDataSO.PlayerRealmLevel * 100;
+        playerDataSO.spiritualEnergyToNextLevel += playerDataSO.PlayerRealmLevel * 100;
     }
 
     private void LevelUp()
     {
         playerDataSO.currentSpiritualEnergy -= playerDataSO.spiritualEnergyToNextLevel;
+        playerDataSO.PlayerRealmLevel +=1;
         InitializeAdditionalChangeStats();
         UpdateExperienceToNextLevel();
         Debug.Log($"{playerDataSO.characterClass.className} leveled up to level {playerDataSO.currentSpiritualEnergy}!");
