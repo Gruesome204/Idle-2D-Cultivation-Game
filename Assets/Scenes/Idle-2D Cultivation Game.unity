@@ -317,7 +317,7 @@ MonoBehaviour:
   rayPoint: {fileID: 1477926760}
   rayDistance: 0
   grabbedObject: {fileID: 0}
-  playerCharacter: {fileID: 0}
+  playerCharacter: {fileID: 52261945}
   IsGrabbed: 0
 --- !u!1 &144455783
 GameObject:
