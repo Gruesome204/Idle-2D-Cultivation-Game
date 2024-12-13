@@ -22,18 +22,18 @@ MonoBehaviour:
   cultivationTechniqueLevel: 0
   equippedItem: {fileID: 0}
   PlayerRealm: 0
-  PlayerRealmLevel: 1
+  PlayerRealmLevel: 7
   currentTribulationEnergy: 0
   CultivationSpecialization: 0
   currentMoney: 0
-  currentSpiritualEnergy: 0
-  energyPerSecond: 1
-  spiritualEnergyToNextLevel: 0
+  currentSpiritualEnergy: 2341.9268
+  energyPerSecond: 100
+  spiritualEnergyToNextLevel: 2700
   currentInsight: 0
-  currentHealth: 0
-  maxHealth: 0
+  currentHealth: 107
+  maxHealth: 107
   titleBonus: 0
-  currentAttack: 0
-  currentDefense: 0
-  currentAttackSpeed: 0
-  currentGameState: 2
+  currentAttack: 9
+  currentDefense: 9
+  currentAttackSpeed: 1
+  currentGameState: 1

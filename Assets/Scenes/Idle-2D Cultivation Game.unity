@@ -136,8 +136,8 @@ GameObject:
   - component: {fileID: 52261948}
   - component: {fileID: 52261953}
   - component: {fileID: 52261954}
-  - component: {fileID: 52261951}
   - component: {fileID: 52261958}
+  - component: {fileID: 52261959}
   m_Layer: 0
   m_Name: PlayerCharakter
   m_TagString: Play
@@ -226,24 +226,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
---- !u!114 &52261951
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 52261945}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8736665e72c4ce48af35329d08c436e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grabPoint: {fileID: 1477926760}
-  rayPoint: {fileID: 1477926760}
-  rayDistance: 0
-  grabbedObject: {fileID: 0}
-  playerCharacter: {fileID: 52261945}
-  IsGrabbed: 0
 --- !u!50 &52261953
 Rigidbody2D:
   serializedVersion: 4
@@ -319,6 +301,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerDataSO: {fileID: 11400000, guid: 29a3e50ca4fb86f46a8fdcfd7337911c, type: 2}
+--- !u!114 &52261959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52261945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8736665e72c4ce48af35329d08c436e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grabPoint: {fileID: 1477926760}
+  rayPoint: {fileID: 1477926760}
+  rayDistance: 0
+  grabbedObject: {fileID: 0}
+  playerCharacter: {fileID: 0}
+  IsGrabbed: 0
 --- !u!1 &144455783
 GameObject:
   m_ObjectHideFlags: 0
@@ -1187,6 +1187,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1022007986}
   - component: {fileID: 1022007987}
+  - component: {fileID: 1022007988}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1222,7 +1223,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerDataSO: {fileID: 11400000, guid: 29a3e50ca4fb86f46a8fdcfd7337911c, type: 2}
-  player: {fileID: 52261945}
+--- !u!114 &1022007988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1022007985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80225595109412249b70dfbc57e8f772, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1026900914
 GameObject:
   m_ObjectHideFlags: 0

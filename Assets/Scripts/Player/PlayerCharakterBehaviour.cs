@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
+using UnityEngine.Events;
+using System;
 
 public class PlayerCharakter : MonoBehaviour
 {
@@ -22,7 +23,8 @@ public class PlayerCharakter : MonoBehaviour
 
     private void InitializeInitialStats()
     {
-        playerDataSO.maxHealth = playerDataSO.characterClass.baseHealth + (int)playerDataSO.PlayerRealmLevel * playerDataSO.characterClass.healthPerLevel + (playerDataSO.equippedItem != null ? playerDataSO.equippedItem.bonusHealth : 0) + (playerDataSO.cultivationTechnique != null ? playerDataSO.cultivationTechnique.bonusHealth : 0);
+    
+        playerDataSO.maxHealth = playerDataSO.characterClass.baseHealth  + (int)playerDataSO.PlayerRealmLevel * playerDataSO.characterClass.healthPerLevel + (playerDataSO.equippedItem != null ? playerDataSO.equippedItem.bonusHealth : 0) + (playerDataSO.cultivationTechnique != null ? playerDataSO.cultivationTechnique.bonusHealth : 0);
         playerDataSO.currentHealth = playerDataSO.maxHealth;
         playerDataSO.currentAttack = playerDataSO.characterClass.baseAttack + (int)playerDataSO.PlayerRealmLevel * playerDataSO.characterClass.attackPerLevel + (playerDataSO.equippedItem != null ? playerDataSO.equippedItem.bonusAttack : 0) + (playerDataSO.cultivationTechnique != null ? playerDataSO.cultivationTechnique.bonusAttack : 0);
         playerDataSO.currentDefense = playerDataSO.characterClass.baseDefense + (int)playerDataSO.PlayerRealmLevel * playerDataSO.characterClass.defensePerLevel + (playerDataSO.equippedItem != null ? playerDataSO.equippedItem.bonusDefense : 0) + (playerDataSO.cultivationTechnique != null ? playerDataSO.cultivationTechnique.bonusDefense : 0);
@@ -42,7 +44,7 @@ public class PlayerCharakter : MonoBehaviour
     public void ChangeCharakterClass(RPGClassAsset characterClass)
     {
         playerDataSO.characterClass = characterClass;
-          InitializeAdditionalChangeStats();
+        InitializeAdditionalChangeStats();
     }
 
     public void ChangeEquipedItem(RPGEquipmentAsset newItem)
@@ -111,36 +113,43 @@ public class PlayerCharakter : MonoBehaviour
 
     private void Update()
     {
-        AddExperience();
+        if(playerDataSO.currentGameState == PlayerDataSO.GameState.Play)
+        {
+
+            if(playerDataSO.characterClass != null)
+            {
+                InitializeAdditionalChangeStats();
+            }
+            
+            AddExperience();
 
             if (Input.GetKeyDown(KeyCode.Q))
-        {
-            UseSkill(playerDataSO.characterClass.skills[0]);
-        }
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            UseSkill(playerDataSO.characterClass.skills[1]);
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            if (playerDataSO.characterClass.skills[2])
+            {
+                UseSkill(playerDataSO.characterClass.skills[0]);
+            }
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                UseSkill(playerDataSO.characterClass.skills[1]);
+            }
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                if (playerDataSO.characterClass.skills[2])
+                UseSkill(playerDataSO.characterClass.skills[2]);
+            }
 
-            UseSkill(playerDataSO.characterClass.skills[2]);
-        }
+            if(Input.GetKeyDown(KeyCode.X)) 
+            {
+                PerformSpecialAbility();
+            }
 
-        if(Input.GetKeyDown(KeyCode.X)) 
-        {
-            PerformSpecialAbility();
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                Debug.Log("Update Status");
+                if(playerDataSO.characterClass)
+                InitializeAdditionalChangeStats();
+            }
+            }
         }
-
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            Debug.Log("Update Status");
-            if(playerDataSO.characterClass)
-            InitializeAdditionalChangeStats();
-        }
-        }
-
 
 
     public void UseSkill(RPGSkillAsset skill)

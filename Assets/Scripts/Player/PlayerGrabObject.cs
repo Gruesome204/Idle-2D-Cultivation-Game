@@ -1,7 +1,7 @@
 using Unity.Burst.CompilerServices;
 using UnityEngine;
 
-public class PlayerObjectInteraction : MonoBehaviour
+public class PlayerGrabObject : MonoBehaviour
 {
 
     [SerializeField] private Transform grabPoint;

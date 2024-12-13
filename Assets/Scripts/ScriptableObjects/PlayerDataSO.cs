@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PlayerDataSO")]
 public class PlayerDataSO : ScriptableObject
 {
+
     //Stored Player Data
     [Header("Player")]
     [SerializeField] public string playerName;

@@ -5,8 +5,7 @@ using UnityEngine;
 public class ChangeGameState : MonoBehaviour
 {
     [SerializeField] private PlayerDataSO PlayerDataSO;
-    [SerializeField] private GameObject player;
-
+    
     //Movement Script
     private ClickMovement playerMovementScript;
     private void Awake()

@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Cultivator
   m_EditorClassIdentifier: 
   className: Cultivator
-  baseHealth: 150
-  baseAttack: 3
-  baseDefense: 3
+  baseHealth: 100
+  baseAttack: 2
+  baseDefense: 2
   attackSpeed: 1
   specialAbility: 
-  healthPerLevel: 2
+  healthPerLevel: 1
   attackPerLevel: 1
   defensePerLevel: 1
   skills:
