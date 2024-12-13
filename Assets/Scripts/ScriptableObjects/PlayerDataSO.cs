@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PlayerDataSO")]
 public class PlayerDataSO : ScriptableObject
 {
-    //Stores Player Data
+    //Stored Player Data
     [Header("Player")]
     [SerializeField] public string playerName;
 	[SerializeField] public string playerAge;
@@ -14,10 +14,13 @@ public class PlayerDataSO : ScriptableObject
     [SerializeField] public string Sect;
 
 
+    //Player Class/Equipment
+    [Header("Player Class/Equipment")]
     public RPGClassAsset characterClass;
     public RPGCultivationTechniqueAsset cultivationTechnique;
     [SerializeField] public int cultivationTechniqueLevel;
     public RPGEquipmentAsset equippedItem;
+
 
     [Header("Realm & Level(1-9)")]
     [SerializeField] private Realms PlayerRealm;
@@ -33,8 +36,8 @@ public class PlayerDataSO : ScriptableObject
 	[Header("Values")]
 	[SerializeField] public int currentMoney;
 
-    [Header("Stats")]
-    //exp of player
+    //Stats of the player
+    [Header("Player Stats")]
     [SerializeField] public float currentSpiritualEnergy;
     [SerializeField] public float energyPerSecond;
     [SerializeField] public int spiritualEnergyToNextLevel;
@@ -42,12 +45,10 @@ public class PlayerDataSO : ScriptableObject
 
     //XP for learning/upgrading techniques...
     [SerializeField] public int currentInsight;
-
     [SerializeField] public int currentHealth;
     [SerializeField] public int maxHealth;
     [SerializeField] public int titleBonus;
-
-    [SerializeField] public int currentAttack;
+     [SerializeField] public int currentAttack;
     [SerializeField] public int currentDefense;
     [SerializeField] public float currentAttackSpeed;
 
