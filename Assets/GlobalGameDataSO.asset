@@ -15,6 +15,7 @@ MonoBehaviour:
   playerName: 
   playerAge: 
   playerTitle: 
+  titleBonus: 0
   currentFame: 0
   Sect: 
   characterClass: {fileID: 11400000, guid: a035a3e2c22757844a5f4d6949e80647, type: 2}
@@ -22,18 +23,21 @@ MonoBehaviour:
   cultivationTechniqueLevel: 0
   equippedItem: {fileID: 0}
   PlayerRealm: 0
-  PlayerRealmLevel: 2
-  currentTribulationEnergy: 0
+  PlayerRealmLevel: 5
+  successChance: 0
+  failedAttempts: 4
   CultivationSpecialization: 0
   currentMoney: 0
-  currentSpiritualEnergy: 0
-  energyPerSecond: 0
-  spiritualEnergyToNextLevel: 200
-  currentInsight: 0
+  currentEnergy: 1185.6534
+  energyGainSecond: 200
+  energyToNextLevel: 1400
+  maxHealth: 105
   currentHealth: 101
-  maxHealth: 102
-  titleBonus: 0
-  currentAttack: 4
-  currentDefense: 4
+  currentAttack: 7
+  currentDefense: 7
   currentAttackSpeed: 1
+  currentInsight: 0
+  Herbs: 0
+  SpiritualCrystals: 0
+  Ore: 0
   currentGameState: 2

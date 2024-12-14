@@ -7,10 +7,11 @@ public class GlobalGameDataSO : ScriptableObject
 {
 
     //Stored Player Data
-    [Header("Player")]
+    [Header("Player Info")]
     [SerializeField] public string playerName;
 	[SerializeField] public string playerAge;
     [SerializeField] public string playerTitle;
+    [SerializeField] public int titleBonus;
     [SerializeField] public int currentFame;
     [SerializeField] public string Sect;
 
@@ -28,37 +29,38 @@ public class GlobalGameDataSO : ScriptableObject
     [SerializeField] public int PlayerRealmLevel;
 
     //player needs enough of tribulation energy to breakthrough to the next major realm..
-    [SerializeField] public int currentTribulationEnergy;
+    [SerializeField] public double successChance;
+    [SerializeField] public int failedAttempts;
 
     [Header("Cultivation Spezialization")]
     [SerializeField] public Specialization CultivationSpecialization;
-	
 	
 	[Header("Values")]
 	[SerializeField] public int currentMoney;
 
     //Stats of the player
     [Header("Player Stats")]
-    [SerializeField] public float currentSpiritualEnergy;
-    [SerializeField] public float energyPerSecond;
-    [SerializeField] public int spiritualEnergyToNextLevel;
+    [SerializeField] public float currentEnergy;
+    [SerializeField] public float energyGainSecond;
+    [SerializeField] public int energyToNextLevel;
 
-
-    //XP for learning/upgrading techniques...
-    [SerializeField] public int currentInsight;
-    [SerializeField] public int currentHealth;
     [SerializeField] public int maxHealth;
-    [SerializeField] public int titleBonus;
-     [SerializeField] public int currentAttack;
+    [SerializeField] public int currentHealth;
+    [SerializeField] public int currentAttack;
     [SerializeField] public int currentDefense;
     [SerializeField] public float currentAttackSpeed;
 
-	
-	
 
+    //XP for learning/upgrading techniques...
+    [Header("Player Techniques")]
+    [SerializeField] public int currentInsight;
+
+    [Header("Player Inventory")]
+    [SerializeField] public int Herbs;
+    [SerializeField] public int SpiritualCrystals;
+    [SerializeField] public int Ore;
     private enum Realms
     {
-        None,
         Mortal,
         Disciple,
         Foundation,
@@ -75,7 +77,6 @@ public class GlobalGameDataSO : ScriptableObject
 	
 	public enum Specialization
 	{
-		None,
 		BodyCultivation,
 		SoulCultivation,
 		ElementalCultivation
@@ -94,7 +95,7 @@ public class GlobalGameDataSO : ScriptableObject
 
     public void ResetData()
     {
-        currentSpiritualEnergy = 0;
+        currentEnergy = 0;
         playerName = "";
         currentGameState = GameState.None;
     }

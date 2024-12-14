@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using System;
+using System.Xml.Linq;
 
 public class PlayerCharakter : MonoBehaviour
 {
@@ -88,40 +89,17 @@ public class PlayerCharakter : MonoBehaviour
             globalGameDataSO.currentHealth = globalGameDataSO.maxHealth;
         }
     }
-    public void AddExperience()
-    {
-        globalGameDataSO.currentSpiritualEnergy += globalGameDataSO.energyPerSecond * Time.deltaTime;
-        if(globalGameDataSO.currentSpiritualEnergy >= globalGameDataSO.spiritualEnergyToNextLevel)
-        {
-            LevelUp();
-        }
-    }
-
-    private void UpdateExperienceToNextLevel()
-    {
-        globalGameDataSO.spiritualEnergyToNextLevel += globalGameDataSO.PlayerRealmLevel * 100;
-    }
-
-    private void LevelUp()
-    {
-        globalGameDataSO.currentSpiritualEnergy -= globalGameDataSO.spiritualEnergyToNextLevel;
-        globalGameDataSO.PlayerRealmLevel +=1;
-        InitializeAdditionalChangeStats();
-        UpdateExperienceToNextLevel();
-        Debug.Log($"{globalGameDataSO.characterClass.className} leveled up to level {globalGameDataSO.currentSpiritualEnergy}!");
-    }
-
     private void Update()
     {
         if(globalGameDataSO.currentGameState == GlobalGameDataSO.GameState.Play)
         {
+           
 
-            if(globalGameDataSO.characterClass != null)
+            if (globalGameDataSO.characterClass != null)
             {
                 InitializeAdditionalChangeStats();
             }
-            
-            AddExperience();
+              
 
             if (Input.GetKeyDown(KeyCode.Q))
             {
