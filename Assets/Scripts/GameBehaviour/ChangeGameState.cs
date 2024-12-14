@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChangeGameState : MonoBehaviour
 {
-    [SerializeField] private PlayerDataSO PlayerDataSO;
+    [SerializeField] private GlobalGameDataSO globalGameDataSO;
     
     //Movement Script
     private ClickMovement playerMovementScript;
@@ -12,7 +12,7 @@ public class ChangeGameState : MonoBehaviour
     {
 
         //Set Game State upon loading the Scene
-        PlayerDataSO.currentGameState = PlayerDataSO.GameState.Play;
+        globalGameDataSO.currentGameState = GlobalGameDataSO.GameState.Play;
 
         //Reference the Movement Script of the Player
         playerMovementScript = GameObject.FindObjectOfType<ClickMovement>();
@@ -22,25 +22,25 @@ public class ChangeGameState : MonoBehaviour
     private void Update()
     {
         //Pause game
-        if (PlayerDataSO.currentGameState == PlayerDataSO.GameState.Pause)
+        if (globalGameDataSO.currentGameState == GlobalGameDataSO.GameState.Pause)
         {
             playerMovementScript.enabled = false;
         }
-        else if (PlayerDataSO.currentGameState == PlayerDataSO.GameState.Play)
+        else if (globalGameDataSO.currentGameState == GlobalGameDataSO.GameState.Play)
         {
             playerMovementScript.enabled = true;
         }
 
 
         if (Input.GetKeyDown(KeyCode.Escape)){
-            if(PlayerDataSO.currentGameState == PlayerDataSO.GameState.Play)
+            if(globalGameDataSO.currentGameState == GlobalGameDataSO.GameState.Play)
             {
-                PlayerDataSO.currentGameState = PlayerDataSO.GameState.Pause;
+                globalGameDataSO.currentGameState = GlobalGameDataSO.GameState.Pause;
                 Debug.Log("Game Pause");
             }
             else
             {
-                PlayerDataSO.currentGameState = PlayerDataSO.GameState.Play;
+                globalGameDataSO.currentGameState = GlobalGameDataSO.GameState.Play;
                 Debug.Log("Game Continue");
             }   
         }

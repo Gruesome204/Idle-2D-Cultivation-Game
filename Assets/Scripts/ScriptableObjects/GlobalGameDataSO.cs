@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "PlayerDataSO")]
-public class PlayerDataSO : ScriptableObject
+[CreateAssetMenu(fileName = "GlobalGameDataSO")]
+public class GlobalGameDataSO : ScriptableObject
 {
 
     //Stored Player Data

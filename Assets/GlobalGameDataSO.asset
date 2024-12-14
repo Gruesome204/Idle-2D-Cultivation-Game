@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e239b81bacc5c5644958adddd8a4c3ef, type: 3}
-  m_Name: PlayerDataSO
+  m_Name: GlobalGameDataSO
   m_EditorClassIdentifier: 
-  playerName: Test
+  playerName: 
   playerAge: 
   playerTitle: 
   currentFame: 0
@@ -22,18 +22,18 @@ MonoBehaviour:
   cultivationTechniqueLevel: 0
   equippedItem: {fileID: 0}
   PlayerRealm: 0
-  PlayerRealmLevel: 7
+  PlayerRealmLevel: 2
   currentTribulationEnergy: 0
   CultivationSpecialization: 0
   currentMoney: 0
-  currentSpiritualEnergy: 2341.9268
-  energyPerSecond: 100
-  spiritualEnergyToNextLevel: 2700
+  currentSpiritualEnergy: 0
+  energyPerSecond: 0
+  spiritualEnergyToNextLevel: 200
   currentInsight: 0
-  currentHealth: 107
-  maxHealth: 107
+  currentHealth: 101
+  maxHealth: 102
   titleBonus: 0
-  currentAttack: 9
-  currentDefense: 9
+  currentAttack: 4
+  currentDefense: 4
   currentAttackSpeed: 1
-  currentGameState: 1
+  currentGameState: 2
