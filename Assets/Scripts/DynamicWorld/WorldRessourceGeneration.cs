@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DynamicWorld : MonoBehaviour
+public class WorldRessourceGeneration : MonoBehaviour
 {
     public GameObject resourcePrefab; // Prefab for resource nodes
     public GameObject npcPrefab; // Prefab for NPCs

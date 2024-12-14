@@ -55,10 +55,10 @@ public class GlobalGameDataSO : ScriptableObject
     [Header("Player Techniques")]
     [SerializeField] public int currentInsight;
 
-    [Header("Player Inventory")]
-    [SerializeField] public int Herbs;
-    [SerializeField] public int SpiritualCrystals;
-    [SerializeField] public int Ore;
+    [Header("Player Ressource Inventory")]
+    [SerializeField] public int herbs;
+    [SerializeField] public int spiritualCrystals;
+    [SerializeField] public int ore;
     private enum Realms
     {
         Mortal,
@@ -92,12 +92,17 @@ public class GlobalGameDataSO : ScriptableObject
     [Header("Game-State")]
     public GameState currentGameState;
        
-
     public void ResetData()
     {
         currentEnergy = 0;
         playerName = "";
         currentGameState = GameState.None;
     }
+
+    [Header("WorldEvents")]
+    [SerializeField] public bool worldEventsActive;
+    [SerializeField] public int  worldEventIntervall;
+
+
     private void OnEnable() => hideFlags = HideFlags.DontUnloadUnusedAsset;
 }

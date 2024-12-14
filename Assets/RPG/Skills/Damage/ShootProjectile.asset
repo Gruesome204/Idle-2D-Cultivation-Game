@@ -18,6 +18,4 @@ MonoBehaviour:
   cooldown: 0
   damageAmount: 0
   healingAmount: 0
-  gameDataSO: {fileID: 11400000, guid: 29a3e50ca4fb86f46a8fdcfd7337911c, type: 2}
-  mousePosition: {x: 0, y: 0, z: 0}
-  ShootProjectilePrefab: {fileID: 8039648206436084130, guid: 09b998da70f6eb04dbbc2d94a7b3acd6, type: 3}
+  gameDataSO: {fileID: 11400000, guid: 380b33b3a23e5884a95dcca37bfbe1ba, type: 2}

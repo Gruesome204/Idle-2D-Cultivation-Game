@@ -23,21 +23,23 @@ MonoBehaviour:
   cultivationTechniqueLevel: 0
   equippedItem: {fileID: 0}
   PlayerRealm: 0
-  PlayerRealmLevel: 5
-  successChance: 0
-  failedAttempts: 4
+  PlayerRealmLevel: 7
+  successChance: 0.20000000298023224
+  failedAttempts: 10
   CultivationSpecialization: 0
   currentMoney: 0
-  currentEnergy: 1185.6534
+  currentEnergy: 1614.8572
   energyGainSecond: 200
-  energyToNextLevel: 1400
-  maxHealth: 105
-  currentHealth: 101
-  currentAttack: 7
-  currentDefense: 7
+  energyToNextLevel: 2700
+  maxHealth: 107
+  currentHealth: 107
+  currentAttack: 9
+  currentDefense: 9
   currentAttackSpeed: 1
   currentInsight: 0
-  Herbs: 0
-  SpiritualCrystals: 0
-  Ore: 0
+  herbs: 0
+  spiritualCrystals: 2
+  ore: 0
   currentGameState: 2
+  worldEventsActive: 0
+  worldEventIntervall: 5
