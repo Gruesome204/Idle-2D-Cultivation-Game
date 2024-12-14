@@ -138,6 +138,8 @@ GameObject:
   - component: {fileID: 52261954}
   - component: {fileID: 52261958}
   - component: {fileID: 52261959}
+  - component: {fileID: 52261960}
+  - component: {fileID: 52261961}
   m_Layer: 0
   m_Name: PlayerCharakter
   m_TagString: Play
@@ -319,6 +321,31 @@ MonoBehaviour:
   grabbedObject: {fileID: 0}
   playerCharacter: {fileID: 52261945}
   IsGrabbed: 0
+--- !u!114 &52261960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52261945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbeedf1090932454282a4eb25f55a7e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &52261961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52261945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 861d8f9d501306a4987508b5567581be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  globalGameDataSO: {fileID: 11400000, guid: 380b33b3a23e5884a95dcca37bfbe1ba, type: 2}
 --- !u!1 &144455783
 GameObject:
   m_ObjectHideFlags: 0
@@ -1715,6 +1742,7 @@ GameObject:
   - component: {fileID: 1629636539}
   - component: {fileID: 1629636538}
   - component: {fileID: 1629636540}
+  - component: {fileID: 1629636541}
   m_Layer: 6
   m_Name: Square
   m_TagString: Untagged
@@ -1834,6 +1862,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!50 &1629636541
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629636537}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!1 &1687226557
 GameObject:
   m_ObjectHideFlags: 0

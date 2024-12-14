@@ -1,4 +1,5 @@
 using Unity.Burst.CompilerServices;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class PlayerGrabObject : MonoBehaviour
@@ -23,17 +24,7 @@ public class PlayerGrabObject : MonoBehaviour
 
     void Update()
     {
-           
-        if (Input.GetMouseButtonDown(0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            var hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity);
-
-            if (hit)
-            {
-                InteractWithObject(hit.collider.gameObject);
-            }
-        }
+           //Interaction with Objects In Scene
 
 
 
@@ -42,31 +33,37 @@ public class PlayerGrabObject : MonoBehaviour
 
         if (hitInfo.collider != null && hitInfo.collider.gameObject.layer == 6)
         {
-            if (Input.GetKeyDown(KeyCode.Space) && IsGrabbed == false)
+            Debug.DrawRay(rayPoint.position, transform.right * rayDistance);
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                grabbedObject = hitInfo.collider.gameObject;
-                grabbedObject.transform.SetParent(playerCharacter.transform);
-                IsGrabbed = true;
-                Debug.Log("Grab Object");
-            }
-            else if (Input.GetKeyDown(KeyCode.Space) && IsGrabbed == true)
-            {
-                grabbedObject.transform.SetParent(null);
-                grabbedObject = null;
-                IsGrabbed = false;
-
-                Debug.Log("Place Object");
+                if(grabbedObject == null)
+                {
+                    GrabObject(hitInfo);
+                }
+                else
+                {
+                    PlaceObject();
+                }
             }
         }
-        Debug.DrawRay(rayPoint.position, transform.right * rayDistance);
     }
 
-    void InteractWithObject(GameObject objectToInteractWith)
+    public void GrabObject(RaycastHit2D hitInfo)
     {
-        if (objectToInteractWith.TryGetComponent(out IClickable clickableObject))
-        {
-            clickableObject.Interact();
-        }
+        grabbedObject = hitInfo.collider.gameObject;
+        grabbedObject.transform.SetParent(playerCharacter.transform);
+        IsGrabbed = true;
+        Debug.Log("Grab Object");
     }
+
+    public void PlaceObject()
+    {
+        grabbedObject.transform.SetParent(null);
+        grabbedObject = null;
+        IsGrabbed = false;
+
+        Debug.Log("Place Object");
+    }
+
 }
 
