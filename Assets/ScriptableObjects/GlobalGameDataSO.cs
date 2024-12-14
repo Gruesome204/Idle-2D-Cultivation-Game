@@ -103,6 +103,8 @@ public class GlobalGameDataSO : ScriptableObject
     [SerializeField] public bool worldEventsActive;
     [SerializeField] public int  worldEventIntervall;
 
+    [Header("WorldGeneration")]
+    [SerializeField] public BaseAncientRuinData[] ancientRuinListe;
 
     private void OnEnable() => hideFlags = HideFlags.DontUnloadUnusedAsset;
 }

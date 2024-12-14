@@ -11,7 +11,6 @@ public class WorldEvents : MonoBehaviour
         StartCoroutine(TriggerRandomEvents());
     }
 
-
     private IEnumerator TriggerRandomEvents()
     {
         while (globalGameDataSO.worldEventsActive)
