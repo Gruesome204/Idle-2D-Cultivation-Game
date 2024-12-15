@@ -12,7 +12,7 @@ public class AncientRuinInteractable : MonoBehaviour, IClickable
     {
         Debug.Log($"Ancient Ruin Interaction");
 
-      int num =   Random.Range( 0, globalGameDataSO.ancientRuinListe.Length);
+      int num =   Random.Range( 2, globalGameDataSO.ancientRuinListe.Length);
 
         SceneManager.LoadScene(num);
         //globalGameDataSO.ancientRuinListe[num];

@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f45de528450d1e4bb035d2c02722002, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ancientRuinListe: []
+  globalGameDataSO: {fileID: 11400000, guid: 380b33b3a23e5884a95dcca37bfbe1ba, type: 2}
 --- !u!60 &648503654223951971
 PolygonCollider2D:
   m_ObjectHideFlags: 0

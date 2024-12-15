@@ -71,6 +71,7 @@ public class GlobalGameDataSO : ScriptableObject
     [Header("WorldGeneration")]
     [SerializeField] public BaseAncientRuinData[] ancientRuinListe;
     [SerializeField] public BaseAncientRuinData[] resourceList;
+    
     private enum Realms
     {
         Mortal,

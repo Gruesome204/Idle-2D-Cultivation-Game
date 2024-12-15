@@ -7,8 +7,8 @@ public class BaseAncientRuinData : ScriptableObject
 {
     public string ruinName;
     public Sprite ruinSprite;
-    public string targetRealmScene;
-    private string originalRealmScene;
+    public string targetRealmSceneName;
+    public string originalRealmScene = "MainGame";
     public float realmStayDuration;
     public Vector3 realmSpawnPosition = new Vector3(0, 0, 0);
 

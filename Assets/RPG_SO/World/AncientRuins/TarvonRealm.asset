@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: TarvonRealm
   m_EditorClassIdentifier: 
   ruinName: TarvonRealm
-  targetRealmScene: 
+  ruinSprite: {fileID: 0}
+  targetRealmSceneName: TarvonRealm
+  originalRealmScene: MainGame
   realmStayDuration: 30
   realmSpawnPosition: {x: 0, y: 0, z: 0}
