@@ -12,7 +12,6 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 public class SingleTargetDamageSkill : RPGSkillAsset
 {
 
-    [SerializeField] private GlobalGameDataSO gameDataSO;
 
     public override void UseSkill(PlayerCharakter player)
     {

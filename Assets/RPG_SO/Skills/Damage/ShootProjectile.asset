@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: ShootProjectile
   m_EditorClassIdentifier: 
   skillName: ShootProjectile
+  skillType: 1
   description: 
   manaCost: 0
   cooldown: 0
+  castDuration: 0
   damageAmount: 0
   healingAmount: 0
   gameDataSO: {fileID: 11400000, guid: 380b33b3a23e5884a95dcca37bfbe1ba, type: 2}

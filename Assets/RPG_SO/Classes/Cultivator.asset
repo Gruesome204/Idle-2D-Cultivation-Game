@@ -23,5 +23,5 @@ MonoBehaviour:
   defensePerLevel: 1
   skills:
   - {fileID: 11400000, guid: e60c3693c9d43a3438c374168f9ded99, type: 2}
-  - {fileID: 11400000, guid: e20dc2fa23d1ff943b418f1d34ebdbab, type: 2}
+  - {fileID: 11400000, guid: 87a90c7b8f9aba24c98a9d1c540394aa, type: 2}
   - {fileID: 11400000, guid: fb72d303f4477594e9a29fec6f3d4d1a, type: 2}

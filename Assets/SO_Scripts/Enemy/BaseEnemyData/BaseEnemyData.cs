@@ -1,16 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-[CreateAssetMenu(fileName = "NewBaseBossData", menuName = "RPG/Enemy/CreateBossData")]
-public class BaseBossData : ScriptableObject
+[CreateAssetMenu(fileName = "NewBaseEnemyData", menuName = "RPG/Enemy/CreateEnemyData")]
+public class BaseEnemyData : ScriptableObject
 {
-    public string bossName;
+    public string enemyName;
     public int health;
     public float speed;
     public int damage;
-    public Sprite bossSprite;
+    public Sprite enemySprite;
     public GameObject specialAttackPrefab;
-
 }
-

@@ -10,7 +10,7 @@ public class SelfHealingSkill: RPGSkillAsset
         base.UseSkill(player);
 
         // Heal the user or a selected ally
-        //player.AddHealth(10);
+        player.AddHealth(10);
         //Debug.Log($"{player.characterClass.className} healed for {effectStrength} health.");
     }
 }

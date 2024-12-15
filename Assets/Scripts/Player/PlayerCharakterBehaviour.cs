@@ -8,11 +8,10 @@ using System.Xml.Linq;
 public class PlayerCharakter : MonoBehaviour
 {
     [SerializeField] private GlobalGameDataSO globalGameDataSO;
-    private bool reloadStats = true;
+ 
 
     private void Start()
     {
-        reloadStats = true;
         if (globalGameDataSO.characterClass != null)
         {
             InitializeInitialStats();
@@ -91,11 +90,12 @@ public class PlayerCharakter : MonoBehaviour
             globalGameDataSO.currentHealth = globalGameDataSO.maxHealth;
         }
     }
+
+
     private void Update()
     {
         if(globalGameDataSO.currentGameState == GlobalGameDataSO.GameState.Play)
         {
-
             if (globalGameDataSO.characterClass != null)
             {
                 InitializeAdditionalChangeStats();
@@ -107,11 +107,11 @@ public class PlayerCharakter : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.W))
             {
+                Debug.Log("Heal Target");
                 UseSkill(globalGameDataSO.characterClass.skills[1]);
             }
             if (Input.GetKeyDown(KeyCode.E))
             {
-                if (globalGameDataSO.characterClass.skills[2])
                 UseSkill(globalGameDataSO.characterClass.skills[2]);
             }
 

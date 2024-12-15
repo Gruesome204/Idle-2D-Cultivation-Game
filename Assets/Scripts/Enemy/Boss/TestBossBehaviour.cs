@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TestBossBehaviour : MonoBehaviour, IDamageable
+public class TestBossBehaviour : MonoBehaviour, IDamageable,IHealable
 {
     public BaseBossData baseBossData;
 
@@ -45,5 +45,10 @@ public class TestBossBehaviour : MonoBehaviour, IDamageable
             Instantiate(baseBossData.specialAttackPrefab, transform.position, Quaternion.identity);
             Debug.Log($"{baseBossData.bossName} used their special attack!");
         }
+    }
+
+    public void AddHealth(int amountHealing)
+    {
+        currentHealth += amountHealing;
     }
 }
