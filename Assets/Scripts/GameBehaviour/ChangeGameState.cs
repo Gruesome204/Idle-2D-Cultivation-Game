@@ -21,6 +21,8 @@ public class ChangeGameState : MonoBehaviour
 
     private void Update()
     {
+        while(globalGameDataSO.currentGameState == GlobalGameDataSO.GameState.Pause)
+
         //Pause game
         if (globalGameDataSO.currentGameState == GlobalGameDataSO.GameState.Pause)
         {

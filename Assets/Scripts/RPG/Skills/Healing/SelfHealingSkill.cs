@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SelfHealingSkill", menuName = "RPG/Create Skills/SelfHealingSkill")]
+[CreateAssetMenu(fileName = "SelfHealingSkill", menuName = "RPG/Player/Create Skills/SelfHealingSkill")]
 public class SelfHealingSkill: RPGSkillAsset
 {
     public override void UseSkill(PlayerCharakter player)

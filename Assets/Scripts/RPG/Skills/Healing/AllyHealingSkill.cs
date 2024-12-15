@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "AllyHealingSkill", menuName = "RPG/Create Skills/AllyHealingSkill")]
+[CreateAssetMenu(fileName = "AllyHealingSkill", menuName = "RPG/Player/Create Skills/AllyHealingSkill")]
 public class AllyHealingSkill: RPGSkillAsset
 {
     public override void UseSkill(PlayerCharakter player)

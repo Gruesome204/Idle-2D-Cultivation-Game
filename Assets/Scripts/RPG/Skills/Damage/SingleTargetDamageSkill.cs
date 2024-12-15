@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.TextCore.Text;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 
-[CreateAssetMenu(fileName = "SingleTargetDamageSkill", menuName = "RPG/Create Skills/SingleTargetDamageSkill")]
+[CreateAssetMenu(fileName = "SingleTargetDamageSkill", menuName = "RPG/Player/Create Skills/SingleTargetDamageSkill")]
 public class SingleTargetDamageSkill : RPGSkillAsset
 {
 

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e239b81bacc5c5644958adddd8a4c3ef, type: 3}
   m_Name: GlobalGameDataSO
   m_EditorClassIdentifier: 
-  playerName: 
+  playerName: Default
   playerAge: 
   playerTitle: 
   titleBonus: 0
@@ -21,9 +21,9 @@ MonoBehaviour:
   characterClass: {fileID: 11400000, guid: a035a3e2c22757844a5f4d6949e80647, type: 2}
   cultivationTechnique: {fileID: 0}
   cultivationTechniqueLevel: 0
-  equippedItem: {fileID: 0}
-  PlayerRealm: 0
-  PlayerRealmLevel: 11
+  equippedItem: {fileID: 11400000, guid: 7257047ec48cafc489a30fa2eae555b8, type: 2}
+  playerRealm: 0
+  playerRealmLevel: 2
   successChance: 0
   failedAttempts: 13
   CultivationSpecialization: 0
@@ -31,17 +31,18 @@ MonoBehaviour:
   currentEnergy: 0
   energyGainSecond: 0
   energyToNextLevel: 0
-  maxHealth: 0
-  currentHealth: 0
-  currentAttack: 0
-  currentDefense: 0
+  maxHealth: 102
+  currentHealth: 102
+  currentAttack: 6
+  currentDefense: 5
   currentAttackSpeed: 1
   currentInsight: 0
   herbs: 0
-  spiritualCrystals: 6
+  spiritualCrystals: 9
   ore: 0
-  currentGameState: 2
   worldEventsActive: 0
   worldEventIntervall: 5
   ancientRuinListe:
   - {fileID: 11400000, guid: dd7ea59cf556385479a8b93beed5180b, type: 2}
+  resourceList: []
+  currentGameState: 2

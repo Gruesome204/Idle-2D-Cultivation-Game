@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New RPG Class", menuName = "RPG/Create Class")]
+[CreateAssetMenu(fileName = "New RPG Class", menuName = "RPG/Player/Create Class")]
 public class RPGClassAsset : ScriptableObject
 {
     public string className;

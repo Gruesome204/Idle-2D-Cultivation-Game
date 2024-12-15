@@ -8,10 +8,12 @@ using System.Xml.Linq;
 public class PlayerCharakter : MonoBehaviour
 {
     [SerializeField] private GlobalGameDataSO globalGameDataSO;
+    private bool reloadStats = true;
 
     private void Start()
     {
-        if(globalGameDataSO.characterClass != null)
+        reloadStats = true;
+        if (globalGameDataSO.characterClass != null)
         {
             InitializeInitialStats();
         }
@@ -25,18 +27,18 @@ public class PlayerCharakter : MonoBehaviour
     private void InitializeInitialStats()
     {
     
-        globalGameDataSO.maxHealth = globalGameDataSO.characterClass.baseHealth  + (int)globalGameDataSO.PlayerRealmLevel * globalGameDataSO.characterClass.healthPerLevel + (globalGameDataSO.equippedItem != null ? globalGameDataSO.equippedItem.bonusHealth : 0) + (globalGameDataSO.cultivationTechnique != null ? globalGameDataSO.cultivationTechnique.bonusHealth : 0);
+        globalGameDataSO.maxHealth = globalGameDataSO.characterClass.baseHealth  + (int)globalGameDataSO.playerRealmLevel * globalGameDataSO.characterClass.healthPerLevel + (globalGameDataSO.equippedItem != null ? globalGameDataSO.equippedItem.bonusHealth : 0) + (globalGameDataSO.cultivationTechnique != null ? globalGameDataSO.cultivationTechnique.bonusHealth : 0);
         globalGameDataSO.currentHealth = globalGameDataSO.maxHealth;
-        globalGameDataSO.currentAttack = globalGameDataSO.characterClass.baseAttack + (int)globalGameDataSO.PlayerRealmLevel * globalGameDataSO.characterClass.attackPerLevel + (globalGameDataSO.equippedItem != null ? globalGameDataSO.equippedItem.bonusAttack : 0) + (globalGameDataSO.cultivationTechnique != null ? globalGameDataSO.cultivationTechnique.bonusAttack : 0);
-        globalGameDataSO.currentDefense = globalGameDataSO.characterClass.baseDefense + (int)globalGameDataSO.PlayerRealmLevel * globalGameDataSO.characterClass.defensePerLevel + (globalGameDataSO.equippedItem != null ? globalGameDataSO.equippedItem.bonusDefense : 0) + (globalGameDataSO.cultivationTechnique != null ? globalGameDataSO.cultivationTechnique.bonusDefense : 0);
+        globalGameDataSO.currentAttack = globalGameDataSO.characterClass.baseAttack + (int)globalGameDataSO.playerRealmLevel * globalGameDataSO.characterClass.attackPerLevel + (globalGameDataSO.equippedItem != null ? globalGameDataSO.equippedItem.bonusAttack : 0) + (globalGameDataSO.cultivationTechnique != null ? globalGameDataSO.cultivationTechnique.bonusAttack : 0);
+        globalGameDataSO.currentDefense = globalGameDataSO.characterClass.baseDefense + (int)globalGameDataSO.playerRealmLevel * globalGameDataSO.characterClass.defensePerLevel + (globalGameDataSO.equippedItem != null ? globalGameDataSO.equippedItem.bonusDefense : 0) + (globalGameDataSO.cultivationTechnique != null ? globalGameDataSO.cultivationTechnique.bonusDefense : 0);
         globalGameDataSO.currentAttackSpeed = globalGameDataSO.characterClass.attackSpeed + (globalGameDataSO.cultivationTechnique != null ? globalGameDataSO.cultivationTechnique.bonusAttackspeed : 0);
     }
 
     private void InitializeAdditionalChangeStats()
     {
-        globalGameDataSO.maxHealth = globalGameDataSO.characterClass.baseHealth + (int)globalGameDataSO.PlayerRealmLevel * globalGameDataSO.characterClass.healthPerLevel + (globalGameDataSO.equippedItem != null ? globalGameDataSO.equippedItem.bonusHealth : 0) + (globalGameDataSO.cultivationTechnique != null ? globalGameDataSO.cultivationTechnique.bonusHealth : 0);
-        globalGameDataSO.currentAttack = globalGameDataSO.characterClass.baseAttack + (int)globalGameDataSO.PlayerRealmLevel * globalGameDataSO.characterClass.attackPerLevel + (globalGameDataSO.equippedItem != null ? globalGameDataSO.equippedItem.bonusAttack : 0) + (globalGameDataSO.cultivationTechnique != null ? globalGameDataSO.cultivationTechnique.bonusAttack : 0);
-        globalGameDataSO.currentDefense = globalGameDataSO.characterClass.baseDefense + (int)globalGameDataSO.PlayerRealmLevel * globalGameDataSO.characterClass.defensePerLevel + (globalGameDataSO.equippedItem != null ? globalGameDataSO.equippedItem.bonusDefense : 0) + (globalGameDataSO.cultivationTechnique != null ? globalGameDataSO.cultivationTechnique.bonusDefense : 0);
+        globalGameDataSO.maxHealth = globalGameDataSO.characterClass.baseHealth + (int)globalGameDataSO.playerRealmLevel * globalGameDataSO.characterClass.healthPerLevel + (globalGameDataSO.equippedItem != null ? globalGameDataSO.equippedItem.bonusHealth : 0) + (globalGameDataSO.cultivationTechnique != null ? globalGameDataSO.cultivationTechnique.bonusHealth : 0);
+        globalGameDataSO.currentAttack = globalGameDataSO.characterClass.baseAttack + (int)globalGameDataSO.playerRealmLevel * globalGameDataSO.characterClass.attackPerLevel + (globalGameDataSO.equippedItem != null ? globalGameDataSO.equippedItem.bonusAttack : 0) + (globalGameDataSO.cultivationTechnique != null ? globalGameDataSO.cultivationTechnique.bonusAttack : 0);
+        globalGameDataSO.currentDefense = globalGameDataSO.characterClass.baseDefense + (int)globalGameDataSO.playerRealmLevel * globalGameDataSO.characterClass.defensePerLevel + (globalGameDataSO.equippedItem != null ? globalGameDataSO.equippedItem.bonusDefense : 0) + (globalGameDataSO.cultivationTechnique != null ? globalGameDataSO.cultivationTechnique.bonusDefense : 0);
         globalGameDataSO.currentAttackSpeed = globalGameDataSO.characterClass.attackSpeed + (globalGameDataSO.cultivationTechnique != null ? globalGameDataSO.cultivationTechnique.bonusAttackspeed : 0);
     }
 
@@ -62,7 +64,7 @@ public class PlayerCharakter : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        globalGameDataSO.currentHealth -= damage;
+        globalGameDataSO.currentHealth = Mathf.Max(globalGameDataSO.currentHealth - damage, 0);
         Debug.Log($"{this.gameObject.name} took damage: {damage}");
 
         if (globalGameDataSO.currentHealth <= 0)
@@ -93,13 +95,11 @@ public class PlayerCharakter : MonoBehaviour
     {
         if(globalGameDataSO.currentGameState == GlobalGameDataSO.GameState.Play)
         {
-           
 
             if (globalGameDataSO.characterClass != null)
             {
                 InitializeAdditionalChangeStats();
             }
-              
 
             if (Input.GetKeyDown(KeyCode.Q))
             {
@@ -123,7 +123,6 @@ public class PlayerCharakter : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.C))
             {
                 Debug.Log("Update Status");
-                if(globalGameDataSO.characterClass)
                 InitializeAdditionalChangeStats();
             }
             }

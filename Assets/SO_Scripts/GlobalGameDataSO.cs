@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
+//Stored Player Data Global Accessable
 [CreateAssetMenu(fileName = "GlobalGameDataSO")]
 public class GlobalGameDataSO : ScriptableObject
 {
 
-    //Stored Player Data
+    //Player Info
     [Header("Player Info")]
     [SerializeField] public string playerName;
 	[SerializeField] public string playerAge;
@@ -14,6 +15,9 @@ public class GlobalGameDataSO : ScriptableObject
     [SerializeField] public int titleBonus;
     [SerializeField] public int currentFame;
     [SerializeField] public string Sect;
+
+    public string PlayerName { get => playerName; set => playerName = value; }
+    public int CurrentFame { get => currentFame; set => currentFame = Mathf.Max(0, value); }
 
 
     //Player Class/Equipment
@@ -25,8 +29,8 @@ public class GlobalGameDataSO : ScriptableObject
 
 
     [Header("Realm & Level(1-9)")]
-    [SerializeField] private Realms PlayerRealm;
-    [SerializeField] public int PlayerRealmLevel;
+    [SerializeField] private Realms playerRealm;
+    [SerializeField] public int playerRealmLevel;
 
     //player needs enough of tribulation energy to breakthrough to the next major realm..
     [SerializeField] public double successChance;
@@ -59,6 +63,14 @@ public class GlobalGameDataSO : ScriptableObject
     [SerializeField] public int herbs;
     [SerializeField] public int spiritualCrystals;
     [SerializeField] public int ore;
+
+    [Header("WorldEvents")]
+    [SerializeField] public bool worldEventsActive;
+    [SerializeField] public int worldEventIntervall;
+
+    [Header("WorldGeneration")]
+    [SerializeField] public BaseAncientRuinData[] ancientRuinListe;
+    [SerializeField] public BaseAncientRuinData[] resourceList;
     private enum Realms
     {
         Mortal,
@@ -91,20 +103,26 @@ public class GlobalGameDataSO : ScriptableObject
 
     [Header("Game-State")]
     public GameState currentGameState;
-       
+
+
+
     public void ResetData()
     {
-        currentEnergy = 0;
-        playerName = "";
-        currentGameState = GameState.None;
+        playerName = "Default";
+        playerRealm = Realms.Mortal;
+        playerRealmLevel = 1;
+        maxHealth = 0;
+        currentHealth = maxHealth;
     }
 
-    [Header("WorldEvents")]
-    [SerializeField] public bool worldEventsActive;
-    [SerializeField] public int  worldEventIntervall;
+    private void Awake()
+    {
+        ResetData();
+        if (ancientRuinListe == null) ancientRuinListe = new BaseAncientRuinData[0];
+        if (resourceList == null) resourceList = new BaseAncientRuinData[0];
+    }
 
-    [Header("WorldGeneration")]
-    [SerializeField] public BaseAncientRuinData[] ancientRuinListe;
 
     private void OnEnable() => hideFlags = HideFlags.DontUnloadUnusedAsset;
 }
+

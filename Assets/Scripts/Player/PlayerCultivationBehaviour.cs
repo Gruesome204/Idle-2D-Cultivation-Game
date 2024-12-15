@@ -22,7 +22,7 @@ public class PlayerCultivationBehaviour : MonoBehaviour
 
     private void UpdateExperienceToNextLevel()
     {
-        globalGameDataSO.energyToNextLevel += globalGameDataSO.PlayerRealmLevel * 100;
+        globalGameDataSO.energyToNextLevel += globalGameDataSO.playerRealmLevel * 100;
     }
 
     private void LevelUp()
@@ -34,7 +34,7 @@ public class PlayerCultivationBehaviour : MonoBehaviour
         if (success)
         {
             globalGameDataSO.currentEnergy -= globalGameDataSO.energyToNextLevel;
-            globalGameDataSO.PlayerRealmLevel += 1;
+            globalGameDataSO.playerRealmLevel += 1;
             globalGameDataSO.successChance = 0f;
             UpdateExperienceToNextLevel();
             Debug.Log($"{globalGameDataSO.characterClass.className} leveled up to level {globalGameDataSO.currentEnergy}!");
