@@ -50,5 +50,6 @@ public class TestBossBehaviour : MonoBehaviour, IDamageable,IHealable
     public void AddHealth(int amountHealing)
     {
         currentHealth += amountHealing;
+        currentHealth = Mathf.Min(currentHealth, baseBossData.health);
     }
 }

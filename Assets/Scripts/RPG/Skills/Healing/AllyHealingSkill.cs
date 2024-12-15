@@ -11,9 +11,8 @@ public class AllyHealingSkill: RPGSkillAsset
 
         GameObject target = player.AttackTarget();
         Debug.Log(target.name);
-        Debug.Log("executed AllyHealingSKill");
         if (target != null && target.GetComponent<IHealable>() != null)
-            target.GetComponent<IHealable>().AddHealth(10);
+            target.GetComponent<IHealable>().AddHealth(healingAmount);
         //Debug.Log($"{player.playerName} dealt {damageAmount} damage to {target.name}!");
     
     }

@@ -107,7 +107,7 @@ public class PlayerCharakter : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.W))
             {
-                Debug.Log("Heal Target");
+                Debug.Log("Cast W");
                 UseSkill(globalGameDataSO.characterClass.skills[1]);
             }
             if (Input.GetKeyDown(KeyCode.E))

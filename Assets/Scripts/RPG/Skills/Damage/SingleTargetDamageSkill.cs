@@ -1,12 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.Burst.CompilerServices;
-using Unity.VisualScripting;
-using UnityEditor;
-using UnityEditor.Experimental.GraphView;
+
 using UnityEngine;
-using UnityEngine.TextCore.Text;
-using static UnityEngine.RuleTile.TilingRuleOutput;
+
 
 [CreateAssetMenu(fileName = "SingleTargetDamageSkill", menuName = "RPG/Player/Create Skills/SingleTargetDamageSkill")]
 public class SingleTargetDamageSkill : RPGSkillAsset

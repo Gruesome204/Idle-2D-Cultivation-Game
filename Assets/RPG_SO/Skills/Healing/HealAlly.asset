@@ -9,12 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef662c74ad56eb644a844c843ada6cca, type: 3}
+  m_Script: {fileID: 11500000, guid: c486604eb06aa7945adc1816cff8f5a8, type: 3}
   m_Name: HealAlly
   m_EditorClassIdentifier: 
   skillName: HealAlly
+  skillType: 0
   description: 
   manaCost: 0
-  cooldown: 2
+  cooldown: 0
+  castDuration: 0
   damageAmount: 0
   healingAmount: 5
