@@ -32,13 +32,13 @@ MonoBehaviour:
   energyGainSecond: 0
   energyToNextLevel: 0
   maxHealth: 101
-  currentHealth: 74
+  currentHealth: 5
   currentAttack: 5
   currentDefense: 4
   currentAttackSpeed: 1
   currentInsight: 0
   herbs: 0
-  spiritualCrystals: 12
+  spiritualCrystals: 23
   ore: 0
   worldEventsActive: 0
   worldEventIntervall: 5

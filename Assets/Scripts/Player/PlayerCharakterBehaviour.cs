@@ -64,8 +64,6 @@ public class PlayerCharakter : MonoBehaviour
     public void TakeDamage(int damage)
     {
         globalGameDataSO.currentHealth = Mathf.Max(globalGameDataSO.currentHealth - damage, 0);
-        Debug.Log($"{this.gameObject.name} took damage: {damage}");
-
         if (globalGameDataSO.currentHealth <= 0)
         {
             Die();
@@ -107,7 +105,6 @@ public class PlayerCharakter : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.W))
             {
-                Debug.Log("Cast W");
                 UseSkill(globalGameDataSO.characterClass.skills[1]);
             }
             if (Input.GetKeyDown(KeyCode.E))

@@ -21,7 +21,9 @@ public class SingleTargetDamageSkill : RPGSkillAsset
             if (target != null && target.GetComponent<IDamageable>() !=null)
             {
             target.GetComponent<IDamageable>().TakeDamage(damageAmount);
-            //Debug.Log($"{player.playerName} dealt {damageAmount} damage to {target.name}!");
+            Debug.Log($"{player.name} dealt {damageAmount} damage to {target.name}!");
+
+                //Debug.Log($"{player.playerName} dealt {damageAmount} damage to {target.name}!");
             }
         }
     }

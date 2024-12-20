@@ -24,7 +24,6 @@ public class TestBossBehaviour : MonoBehaviour, IDamageable,IHealable
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        Debug.Log($"{baseBossData.bossName} took {damage} damage, remaining health: {currentHealth}");
 
         if (currentHealth <= 0)
         {
