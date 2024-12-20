@@ -7,7 +7,7 @@ public class ChangeGameState : MonoBehaviour
     [SerializeField] private GlobalGameDataSO globalGameDataSO;
     
     //Movement Script
-    private ClickMovement playerMovementScript;
+    private PlayerMovementController playerMovementScript;
     private void Awake()
     {
 
@@ -15,7 +15,7 @@ public class ChangeGameState : MonoBehaviour
         globalGameDataSO.currentGameState = GlobalGameDataSO.GameState.Play;
 
         //Reference the Movement Script of the Player
-        playerMovementScript = GameObject.FindObjectOfType<ClickMovement>();
+        playerMovementScript = GameObject.FindObjectOfType<PlayerMovementController>();
 
     }
 

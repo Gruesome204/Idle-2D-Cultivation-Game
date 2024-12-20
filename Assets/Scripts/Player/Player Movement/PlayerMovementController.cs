@@ -2,18 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClickMovement : MonoBehaviour
+public class PlayerMovementController : MonoBehaviour
 {
 
     [Header("Click Movement Settings")]
     [SerializeField] float speed = 5f;
     private Vector2 targetPosition;
 
-
     void Start()
     {
-        //Mouse Click Movement
-        targetPosition = new Vector2(0.0f, 0.0f);
+      //  targetPosition = new Vector2(0.0f, 0.0f);
     }
 
     private void Update()
