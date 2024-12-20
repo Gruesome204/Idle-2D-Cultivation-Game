@@ -16,7 +16,6 @@ public class AllyHealingSkill: RPGSkillAsset
             Debug.Log($"{player.name} healed {target.name}for {healingAmount}");
 
         }
-        //Debug.Log($"{player.playerName} dealt {damageAmount} damage to {target.name}!");
 
     }
 }
