@@ -1,9 +1,11 @@
 using UnityEngine;
 
-public class TestBossBehaviour : MonoBehaviour, IDamageable,IHealable
+public class TestBossBehaviour : MonoBehaviour, IDamageable, IHealable
 {
     public BaseBossData baseBossData;
+    public ParticleSystem damageParticles;
 
+     public Transform aggroTarget;
     [SerializeField]private int currentHealth;
 
     void Start()
@@ -23,6 +25,7 @@ public class TestBossBehaviour : MonoBehaviour, IDamageable,IHealable
 
     public void TakeDamage(int damage)
     {
+        PlayDamageEffect(this.transform.position);
         currentHealth -= damage;
 
         if (currentHealth <= 0)
@@ -50,5 +53,11 @@ public class TestBossBehaviour : MonoBehaviour, IDamageable,IHealable
     {
         currentHealth += amountHealing;
         currentHealth = Mathf.Min(currentHealth, baseBossData.health);
+    }
+
+    public void PlayDamageEffect(Vector3 position)
+    {
+        damageParticles.transform.position = position;
+        damageParticles.Play();
     }
 }
