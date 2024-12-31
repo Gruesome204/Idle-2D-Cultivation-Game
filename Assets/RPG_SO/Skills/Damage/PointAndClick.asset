@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: PointAndClick
   m_EditorClassIdentifier: 
   skillName: PointAndClick
+  skillType: 0
   description: 
   manaCost: 1
   cooldown: 1
+  castDuration: 0
+  aggroMultiplier: 1.5
   damageAmount: 2
   healingAmount: 0
-  gameDataSO: {fileID: 11400000, guid: 380b33b3a23e5884a95dcca37bfbe1ba, type: 2}

@@ -18,6 +18,7 @@ public abstract class RPGSkillAsset : ScriptableObject
     public int manaCost;
     public float cooldown;
     public float castDuration;
+    public float aggroMultiplier;
     public int damageAmount;
     public int healingAmount;
     public virtual void UseSkill(PlayerCharakter character)

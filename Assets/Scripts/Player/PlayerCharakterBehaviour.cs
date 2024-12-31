@@ -131,6 +131,7 @@ public class PlayerCharakter : MonoBehaviour
         if (globalGameDataSO.characterClass.skills.Contains(skill))
         {
             skill.UseSkill(this);
+            
         }
         else
         {
@@ -149,6 +150,8 @@ public class PlayerCharakter : MonoBehaviour
         }
         return null;
     }
+
+    
 
 
     public void PerformSpecialAbility()

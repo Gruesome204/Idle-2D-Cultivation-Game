@@ -1,11 +1,10 @@
 using UnityEngine;
-
+using System.Collections.Generic;
 public class TestBossBehaviour : MonoBehaviour, IDamageable, IHealable
 {
     public BaseBossData baseBossData;
     public ParticleSystem damageParticles;
 
-     public Transform aggroTarget;
     [SerializeField]private int currentHealth;
 
     void Start()
@@ -22,6 +21,7 @@ public class TestBossBehaviour : MonoBehaviour, IDamageable, IHealable
         // Optional: Initialize other properties
         Debug.Log($"Boss {baseBossData.bossName} initialized with {baseBossData.health} health.");
     }
+
 
     public void TakeDamage(int damage)
     {
