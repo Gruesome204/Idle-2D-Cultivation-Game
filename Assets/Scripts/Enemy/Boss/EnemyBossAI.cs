@@ -9,37 +9,52 @@ public class EnemyBossAI : MonoBehaviour
     public BaseBossData baseBossData;
     private Aggro aggro;
     private GameObject currentTarget;
-    //  public Transform target;
+    public GameObject player;
     public float moveSpeed;
     public float detectionRange = 10f;
-     bool playerIsCloseEnough;
+    private bool isAggroed;
+    bool playerInRange;
 
     void Start()
     {
-       // target = FindObjectOfType<PlayerCharakter>().transform;
+        player = FindObjectOfType<PlayerCharakter>().transform.gameObject;
         moveSpeed = baseBossData.baseSpeed;
         aggro = GetComponent<Aggro>();
     }   
 
     void Update()
     {
-        //float distance = Vector3.Distance(target.position,transform.position);
-        //playerIsCloseEnough = distance <= detectionRange; 
+        float distance = Vector3.Distance(player.transform.position,transform.position);
+        playerInRange = distance <= detectionRange;
 
-        //if(playerIsCloseEnough)
-        //{
-        //    Vector3 direction = (target.position - transform.position).normalized;
-        //    transform.Translate((direction * moveSpeed) * Time.deltaTime);
-        //}
+        isAggroed = aggro != null && aggro.GetHighestAggroTarget() != null;
 
-        UpdateTarget();
-        if(currentTarget != null) 
+        if (isAggroed)
         {
-            Vector3 direction = (currentTarget.transform.position - transform.position).normalized;
-            transform.Translate((direction * moveSpeed) * Time.deltaTime);
+            currentTarget = aggro.GetHighestAggroTarget();
+        }
+        else if (playerInRange)
+        {
+            currentTarget = player;
+        }
+        else
+        {
+            currentTarget = null;
         }
 
-     //   aggro.ReduceAggro(decayRate: 1.0f);
+        if (currentTarget != null)
+        {
+            MoveTowardTarget();
+        }
+
+        UpdateTarget();
+
+    }
+
+    void MoveTowardTarget()
+    {
+        Vector3 direction = (currentTarget.transform.position - transform.position).normalized;
+        transform.Translate(direction * moveSpeed * Time.deltaTime);
     }
 
     void UpdateTarget()
@@ -48,7 +63,7 @@ public class EnemyBossAI : MonoBehaviour
         if (highestAggroTarget != currentTarget)
         {
             currentTarget = highestAggroTarget;
-            Debug.Log($"New target acquired: {currentTarget?.name}");
+            //Debug.Log($"New target acquired: {currentTarget?.name}");
         }
     }
 }

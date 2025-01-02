@@ -8,6 +8,9 @@ public class BaseEnemyData : ScriptableObject
     public int baseHealth;
     public float baseSpeed;
     public int baseDamage;
+    public float baseDetectionRange;
+    public float baseAttackRange;
+    public float baseMoveRange;
     public Sprite baseEnemySprite;
     public GameObject baseSpecialAttackPrefab;
 }
