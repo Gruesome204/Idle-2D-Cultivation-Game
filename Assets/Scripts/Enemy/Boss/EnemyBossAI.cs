@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class EnemyBossAI : MonoBehaviour
 {
 
-    public BaseBossData baseBossData;
+    public BaseStatsData baseStatsData;
     private Aggro aggro;
     private GameObject currentTarget;
     public GameObject player;
@@ -18,13 +18,14 @@ public class EnemyBossAI : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<PlayerCharakter>().transform.gameObject;
-        moveSpeed = baseBossData.baseSpeed;
+        moveSpeed = baseStatsData.baseSpeed;
         aggro = GetComponent<Aggro>();
     }   
 
     void Update()
     {
         float distance = Vector3.Distance(player.transform.position,transform.position);
+
         playerInRange = distance <= detectionRange;
 
         isAggroed = aggro != null && aggro.GetHighestAggroTarget() != null;

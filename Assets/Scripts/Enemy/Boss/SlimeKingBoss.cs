@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 public class SlimeKingBoss : MonoBehaviour, IDamageable, IHealable
 {
-    public BaseBossData baseBossData;
+    public BaseStatsData baseStatsData;
     public ParticleSystem damageParticles;
 
     [SerializeField] private int maxHealth;
@@ -18,15 +18,15 @@ public class SlimeKingBoss : MonoBehaviour, IDamageable, IHealable
     void InitializeBoss()
     {
         // Set up the boss properties from the data
-        maxHealth = baseBossData.baseHealth; 
-        currentHealth = baseBossData.baseHealth;
-        damage = baseBossData.baseDamage;
-        speed = baseBossData.baseSpeed;
+        maxHealth = baseStatsData.baseHealth; 
+        currentHealth = baseStatsData.baseHealth;
+        damage = baseStatsData.baseDamage;
+        speed = baseStatsData.baseSpeed;
 
-        GetComponent<SpriteRenderer>().sprite = baseBossData.baseSprite;
+        GetComponent<SpriteRenderer>().sprite = baseStatsData.baseSprite;
 
         // Optional: Initialize other properties
-        Debug.Log($"Boss {baseBossData.baseName} initialized with {baseBossData.baseHealth} health.");
+        Debug.Log($"Boss {baseStatsData.baseName} initialized with {baseStatsData.baseHealth} health.");
     }
 
 
@@ -43,23 +43,23 @@ public class SlimeKingBoss : MonoBehaviour, IDamageable, IHealable
 
     void Die()
     {
-        Debug.Log($"{baseBossData.baseName} has been defeated!");
+        Debug.Log($"{baseStatsData.baseName} has been defeated!");
         Destroy(gameObject);
     }
 
     public void PerformSpecialAttack()
     {
-        if (baseBossData.baseSpecialAttackPrefab != null)
+        if (baseStatsData.baseSpecialAttackPrefab != null)
         {
-            Instantiate(baseBossData.baseSpecialAttackPrefab, transform.position, Quaternion.identity);
-            Debug.Log($"{baseBossData.baseName} used their special attack!");
+            Instantiate(baseStatsData.baseSpecialAttackPrefab, transform.position, Quaternion.identity);
+            Debug.Log($"{baseStatsData.baseName} used their special attack!");
         }
     }
 
     public void AddHealth(int amountHealing)
     {
         currentHealth += amountHealing;
-        currentHealth = Mathf.Min(currentHealth, baseBossData.baseHealth);
+        currentHealth = Mathf.Min(currentHealth, baseStatsData.baseHealth);
     }
 
     public void PlayDamageEffect(Vector3 position)
