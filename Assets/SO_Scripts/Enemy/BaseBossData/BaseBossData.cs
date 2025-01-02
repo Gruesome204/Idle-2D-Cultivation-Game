@@ -5,12 +5,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewBaseBossData", menuName = "RPG/Enemy/Boss/CreateBossData")]
 public class BaseBossData : ScriptableObject
 {
-    public string bossName;
-    public int health;
-    public float speed;
-    public int damage;
-    public Sprite bossSprite;
-    public GameObject specialAttackPrefab;
-
+    public string baseName;
+    public string baseTitle;
+    public int baseHealth;
+    public float baseSpeed;
+    public int baseDamage;
+    public Sprite baseSprite;
+    public GameObject baseSpecialAttackPrefab;
 }
 

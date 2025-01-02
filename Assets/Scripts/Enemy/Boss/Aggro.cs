@@ -19,18 +19,25 @@ public class Aggro : MonoBehaviour
             aggroTable[source] = amount;
         }
     }
-
+     
     public void ReduceAggro(float decayRate)
     {
         List<GameObject> keys = new List<GameObject>(aggroTable.Keys);
         foreach (GameObject key in keys)
         {
             aggroTable[key] -= decayRate * Time.deltaTime;
+            //Debug.Log($"Decay Rate: {aggroTable[key]}");
             if (aggroTable[key] <= 0)
             {
                 aggroTable.Remove(key);
             }
         }
+    }
+
+    private void Update()
+    {
+
+        ReduceAggro(decayRate: 1.0f);
     }
 
 

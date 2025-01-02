@@ -20,7 +20,7 @@ public class ObjectDamagable : MonoBehaviour, IDamageable
     void Die()
     {
         // Destroy the enemy, play death animation, etc.
-        Debug.Log("Enemy died.");
+        Debug.Log($"{this.gameObject.name} was destroyed.");
         Destroy(gameObject);
     }
 

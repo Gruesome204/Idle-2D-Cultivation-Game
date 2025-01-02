@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.Burst.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -10,23 +11,35 @@ public class SingleTargetDamageSkill : RPGSkillAsset
     {
         base.UseSkill(player);
 
-        // Implement logic to apply damage to a target, for example:
-        // Assume user has a method to get their target
+        // Implement logic to apply damage to a target
         GameObject skillTarget = player.AttackTarget();
 
-        if (skillName == "PointAndClick")
+        if(skillTarget != null)
         {
-            if (skillTarget != null && skillTarget.GetComponent<IDamageable>() !=null)
-            {
-                skillTarget.GetComponent<IDamageable>().TakeDamage(damageAmount);
-                Debug.Log($"{player.name} dealt {damageAmount} damage to {skillTarget.name}!");
+            CheckIfDamagable(skillTarget,player);
+            SetAggro(skillTarget,player);
 
-                Aggro aggro = skillTarget.GetComponent<Aggro>();
-                if (aggro != null)
-                {
-                    aggro.AddAggro(skillTarget.gameObject, damageAmount * aggroMultiplier);
-                }
                 //Debug.Log($"{player.playerName} dealt {damageAmount} damage to {target.name}!");
+        }
+    }
+
+    public void CheckIfDamagable(GameObject skillTarget, PlayerCharakter player)
+    {
+        if (skillTarget.GetComponent<IDamageable>() != null)
+        {
+            skillTarget.GetComponent<IDamageable>().TakeDamage(damageAmount);
+            Debug.Log($"{player.name} dealt {damageAmount} damage to {skillTarget.name}!");
+        }
+    }
+
+    public void SetAggro(GameObject skillTarget, PlayerCharakter player)
+    {
+        if (skillTarget.GetComponent<Aggro>() != null)
+        {
+            Aggro aggro = skillTarget.GetComponent<Aggro>();
+            if (aggro != null)
+            {
+                aggro.AddAggro(player.gameObject, damageAmount * aggroMultiplier);
             }
         }
     }

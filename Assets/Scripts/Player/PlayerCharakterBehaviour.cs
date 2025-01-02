@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using System;
 using System.Xml.Linq;
+using Unity.VisualScripting;
 
 public class PlayerCharakter : MonoBehaviour
 {
@@ -131,7 +132,6 @@ public class PlayerCharakter : MonoBehaviour
         if (globalGameDataSO.characterClass.skills.Contains(skill))
         {
             skill.UseSkill(this);
-            
         }
         else
         {
@@ -143,7 +143,7 @@ public class PlayerCharakter : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
-        if (hit)
+        if (hit && hit.transform.gameObject.GetComponent<IDamageable>() != null)
         {
             // Debug.Log("Test" + hit.transform.gameObject.name);
             return hit.transform.gameObject;
