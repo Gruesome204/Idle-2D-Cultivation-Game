@@ -8,12 +8,13 @@ using Unity.VisualScripting;
 
 public class PlayerCharakter : MonoBehaviour
 {
+    [SerializeField] private GlobalPlayerDataSO globalPlayerDataSO;
     [SerializeField] private GlobalGameDataSO globalGameDataSO;
- 
+
 
     private void Start()
     {
-        if (globalGameDataSO.characterClass != null)
+        if (globalPlayerDataSO.characterClass != null)
         {
             InitializeInitialStats();
         }
@@ -27,45 +28,43 @@ public class PlayerCharakter : MonoBehaviour
     private void InitializeInitialStats()
     {
     
-        globalGameDataSO.maxHealth = globalGameDataSO.characterClass.baseHealth  + (int)globalGameDataSO.playerRealmLevel * globalGameDataSO.characterClass.healthPerLevel + (globalGameDataSO.equippedItem != null ? globalGameDataSO.equippedItem.bonusHealth : 0) + (globalGameDataSO.cultivationTechnique != null ? globalGameDataSO.cultivationTechnique.bonusHealth : 0);
-        globalGameDataSO.currentHealth = globalGameDataSO.maxHealth;
-        globalGameDataSO.currentAttack = globalGameDataSO.characterClass.baseAttack + (int)globalGameDataSO.playerRealmLevel * globalGameDataSO.characterClass.attackPerLevel + (globalGameDataSO.equippedItem != null ? globalGameDataSO.equippedItem.bonusAttack : 0) + (globalGameDataSO.cultivationTechnique != null ? globalGameDataSO.cultivationTechnique.bonusAttack : 0);
-        globalGameDataSO.currentDefense = globalGameDataSO.characterClass.baseDefense + (int)globalGameDataSO.playerRealmLevel * globalGameDataSO.characterClass.defensePerLevel + (globalGameDataSO.equippedItem != null ? globalGameDataSO.equippedItem.bonusDefense : 0) + (globalGameDataSO.cultivationTechnique != null ? globalGameDataSO.cultivationTechnique.bonusDefense : 0);
-        globalGameDataSO.currentAttackSpeed = globalGameDataSO.characterClass.attackSpeed + (globalGameDataSO.cultivationTechnique != null ? globalGameDataSO.cultivationTechnique.bonusAttackspeed : 0);
+        globalPlayerDataSO.maxHealth = globalPlayerDataSO.characterClass.baseHealth  + (int)globalPlayerDataSO.playerRealmLevel * globalPlayerDataSO.characterClass.healthPerLevel + (globalPlayerDataSO.equippedWeapon != null ? globalPlayerDataSO.equippedWeapon.bonusHealth : 0) + (globalPlayerDataSO.cultivationTechnique != null ? globalPlayerDataSO.cultivationTechnique.bonusHealth : 0);
+        globalPlayerDataSO.currentHealth = globalPlayerDataSO.maxHealth;
+        globalPlayerDataSO.currentAttack = globalPlayerDataSO.characterClass.baseAttack + (int)globalPlayerDataSO.playerRealmLevel * globalPlayerDataSO.characterClass.attackPerLevel + (globalPlayerDataSO.equippedWeapon != null ? globalPlayerDataSO.equippedWeapon.bonusAttack : 0) + (globalPlayerDataSO.cultivationTechnique != null ? globalPlayerDataSO.cultivationTechnique.bonusAttack : 0);
+        globalPlayerDataSO.currentAttackSpeed = globalPlayerDataSO.characterClass.baseAttackSpeed + (globalPlayerDataSO.cultivationTechnique != null ? globalPlayerDataSO.cultivationTechnique.bonusAttackspeed : 0);
     }
 
     private void InitializeAdditionalChangeStats()
     {
-        globalGameDataSO.maxHealth = globalGameDataSO.characterClass.baseHealth + (int)globalGameDataSO.playerRealmLevel * globalGameDataSO.characterClass.healthPerLevel + (globalGameDataSO.equippedItem != null ? globalGameDataSO.equippedItem.bonusHealth : 0) + (globalGameDataSO.cultivationTechnique != null ? globalGameDataSO.cultivationTechnique.bonusHealth : 0);
-        globalGameDataSO.currentAttack = globalGameDataSO.characterClass.baseAttack + (int)globalGameDataSO.playerRealmLevel * globalGameDataSO.characterClass.attackPerLevel + (globalGameDataSO.equippedItem != null ? globalGameDataSO.equippedItem.bonusAttack : 0) + (globalGameDataSO.cultivationTechnique != null ? globalGameDataSO.cultivationTechnique.bonusAttack : 0);
-        globalGameDataSO.currentDefense = globalGameDataSO.characterClass.baseDefense + (int)globalGameDataSO.playerRealmLevel * globalGameDataSO.characterClass.defensePerLevel + (globalGameDataSO.equippedItem != null ? globalGameDataSO.equippedItem.bonusDefense : 0) + (globalGameDataSO.cultivationTechnique != null ? globalGameDataSO.cultivationTechnique.bonusDefense : 0);
-        globalGameDataSO.currentAttackSpeed = globalGameDataSO.characterClass.attackSpeed + (globalGameDataSO.cultivationTechnique != null ? globalGameDataSO.cultivationTechnique.bonusAttackspeed : 0);
+        globalPlayerDataSO.maxHealth = globalPlayerDataSO.characterClass.baseHealth + (int)globalPlayerDataSO.playerRealmLevel * globalPlayerDataSO.characterClass.healthPerLevel + (globalPlayerDataSO.equippedWeapon != null ? globalPlayerDataSO.equippedWeapon.bonusHealth : 0) + (globalPlayerDataSO.cultivationTechnique != null ? globalPlayerDataSO.cultivationTechnique.bonusHealth : 0);
+        globalPlayerDataSO.currentAttack = globalPlayerDataSO.characterClass.baseAttack + (int)globalPlayerDataSO.playerRealmLevel * globalPlayerDataSO.characterClass.attackPerLevel + (globalPlayerDataSO.equippedWeapon != null ? globalPlayerDataSO.equippedWeapon.bonusAttack : 0) + (globalPlayerDataSO.cultivationTechnique != null ? globalPlayerDataSO.cultivationTechnique.bonusAttack : 0);
+        globalPlayerDataSO.currentAttackSpeed = globalPlayerDataSO.characterClass.baseAttackSpeed + (globalPlayerDataSO.cultivationTechnique != null ? globalPlayerDataSO.cultivationTechnique.bonusAttackspeed : 0);
     }
 
 
 
     public void ChangeCharakterClass(RPGClassAsset characterClass)
     {
-        globalGameDataSO.characterClass = characterClass;
+        globalPlayerDataSO.characterClass = characterClass;
         InitializeAdditionalChangeStats();
     }
 
     public void ChangeEquipedItem(RPGEquipmentAsset newItem)
     {
-        globalGameDataSO.equippedItem = newItem;
+        globalPlayerDataSO.equippedWeapon = newItem;
         InitializeAdditionalChangeStats(); // Recalculate stats with new item
     }
     public void ChangeCultivationTechnique(RPGCultivationTechniqueAsset newTechnique)
     {
-        globalGameDataSO.cultivationTechnique = newTechnique;
+        globalPlayerDataSO.cultivationTechnique = newTechnique;
         InitializeAdditionalChangeStats(); // Recalculate stats with new item
     }
 
 
     public void TakeDamage(int damage)
     {
-        globalGameDataSO.currentHealth = Mathf.Max(globalGameDataSO.currentHealth - damage, 0);
-        if (globalGameDataSO.currentHealth <= 0)
+        globalPlayerDataSO.currentHealth = Mathf.Max(globalPlayerDataSO.currentHealth - damage, 0);
+        if (globalPlayerDataSO.currentHealth <= 0)
         {
             Die();
         }
@@ -79,14 +78,14 @@ public class PlayerCharakter : MonoBehaviour
 
     public void AddHealth(int healingAmount)
     {
-        if (globalGameDataSO.currentHealth + healingAmount <= globalGameDataSO.maxHealth)
+        if (globalPlayerDataSO.currentHealth + healingAmount <= globalPlayerDataSO.maxHealth)
         {
-            globalGameDataSO.currentHealth += healingAmount;
-            Debug.Log($"{this.gameObject.name} was healed for: {globalGameDataSO.currentHealth}");
+            globalPlayerDataSO.currentHealth += healingAmount;
+            Debug.Log($"{this.gameObject.name} was healed for: {globalPlayerDataSO.currentHealth}");
         }
         else
         {
-            globalGameDataSO.currentHealth = globalGameDataSO.maxHealth;
+            globalPlayerDataSO.currentHealth = globalPlayerDataSO.maxHealth;
         }
     }
 
@@ -95,22 +94,22 @@ public class PlayerCharakter : MonoBehaviour
     {
         if(globalGameDataSO.currentGameState == GlobalGameDataSO.GameState.Play)
         {
-            if (globalGameDataSO.characterClass != null)
+            if (globalPlayerDataSO.characterClass != null)
             {
                 InitializeAdditionalChangeStats();
             }
 
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                UseSkill(globalGameDataSO.characterClass.skills[0]);
+                UseSkill(globalPlayerDataSO.characterClass.skills[0]);
             }
             if (Input.GetKeyDown(KeyCode.W))
             {
-                UseSkill(globalGameDataSO.characterClass.skills[1]);
+                UseSkill(globalPlayerDataSO.characterClass.skills[1]);
             }
             if (Input.GetKeyDown(KeyCode.E))
             {
-                UseSkill(globalGameDataSO.characterClass.skills[2]);
+                UseSkill(globalPlayerDataSO.characterClass.skills[2]);
             }
 
             if(Input.GetKeyDown(KeyCode.X)) 
@@ -129,13 +128,13 @@ public class PlayerCharakter : MonoBehaviour
 
     public void UseSkill(RPGSkillAsset skill)
     {
-        if (globalGameDataSO.characterClass.skills.Contains(skill))
+        if (globalPlayerDataSO.characterClass.skills.Contains(skill))
         {
             skill.UseSkill(this);
         }
         else
         {
-            Debug.Log($"{globalGameDataSO.characterClass.className} does not know {skill.skillName}.");
+            Debug.Log($"{globalPlayerDataSO.characterClass.baseClassName} does not know {skill.skillName}.");
         }
     }
 
@@ -156,6 +155,6 @@ public class PlayerCharakter : MonoBehaviour
 
     public void PerformSpecialAbility()
     {
-        globalGameDataSO.characterClass.PerformSpecialAbility();
+        globalPlayerDataSO.characterClass.PerformSpecialAbility();
     }
 }

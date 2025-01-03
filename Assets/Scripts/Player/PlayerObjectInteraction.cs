@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class PlayerObjectInteraction : MonoBehaviour
 {
-
     void Update()
     {
        //Interaction with Objects In Scene

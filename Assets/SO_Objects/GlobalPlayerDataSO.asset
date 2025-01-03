@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 32
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b80a4b5415059c84a8da4383d2ae3bf6, type: 3}
+  m_Name: GlobalPlayerDataSO
+  m_EditorClassIdentifier: 
+  playerName: Test
+  playerTitle: 
+  playerAge: 
+  currentFame: 0
+  currentkarma: 0
+  currentSect: 
+  characterClass: {fileID: 11400000, guid: a035a3e2c22757844a5f4d6949e80647, type: 2}
+  cultivationTechnique: {fileID: 0}
+  cultivationTechniqueLevel: 0
+  equippedWeapon: {fileID: 0}
+  playerRealm: 0
+  playerRealmLevel: 4
+  successChance: 9.199999809265137
+  failedAttempts: 8
+  CultivationSpecialization: 0
+  currentMoney: 0
+  titleBonus: 0
+  currentEnergy: 44.76655
+  energyGainSecond: 444
+  energyToNextLevel: 1200
+  maxHealth: 104
+  currentHealth: 102
+  currentAttack: 6
+  currentPhyiscalDefense: 0
+  currentMagicalDefense: 0
+  currentAttackSpeed: 0
+  damageMultiplier: 0
+  critChance: 0
+  statusResistance: 0
+  fireResistance: 0
+  waterResistance: 0
+  earthResistance: 0
+  lightningResistance: 0
+  windResistance: 0
+  currentInsight: 0
+  herbs: 0
+  spiritualCrystals: 0
+  ore: 0

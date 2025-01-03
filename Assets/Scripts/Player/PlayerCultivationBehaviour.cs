@@ -6,55 +6,72 @@ using System.Xml.Linq;
 
 public class PlayerCultivationBehaviour : MonoBehaviour
 {
+    [SerializeField] private GlobalPlayerDataSO globalPlayerDataSO;
     [SerializeField] private GlobalGameDataSO globalGameDataSO;
 
+    private void Start()
+    {
+        //Test Cultivation Behaviour
+        globalPlayerDataSO.playerRealmLevel = 1;
+        globalPlayerDataSO.energyGainSecond = 1;
+        globalPlayerDataSO.successChance = 0.4;
+    }
+
+
+    public void Update()
+    {
+        if (globalGameDataSO.currentGameState == GlobalGameDataSO.GameState.Play)
+        {
+            AddExperience();
+        }
+    }
     public void AddExperience()
     {
-        if (globalGameDataSO.currentEnergy <= globalGameDataSO.energyToNextLevel)
+        if (globalPlayerDataSO.currentEnergy <= globalPlayerDataSO.energyToNextLevel)
         {
-            globalGameDataSO.currentEnergy += globalGameDataSO.energyGainSecond * Time.deltaTime;
+            globalPlayerDataSO.currentEnergy += globalPlayerDataSO.energyGainSecond * Time.deltaTime;
         }
         else
-        {
+        {        
             LevelUp();
         }
     }
 
-    private void UpdateExperienceToNextLevel()
-    {
-        globalGameDataSO.energyToNextLevel += globalGameDataSO.playerRealmLevel * 100;
-    }
-
     private void LevelUp()
     {
-        double modifiedSuccess = globalGameDataSO.successChance + (globalGameDataSO.failedAttempts * 0.05);
+        double modifiedSuccess = globalPlayerDataSO.successChance + (globalPlayerDataSO.failedAttempts * 0.05);
         double chance = Math.Min(modifiedSuccess, 1.0); // Cap at 100%
         bool success = UnityEngine.Random.value <= chance;
 
         if (success)
         {
-            globalGameDataSO.currentEnergy -= globalGameDataSO.energyToNextLevel;
-            globalGameDataSO.playerRealmLevel += 1;
-            globalGameDataSO.successChance = 0f;
-            UpdateExperienceToNextLevel();
-            Debug.Log($"{globalGameDataSO.characterClass.className} leveled up to level {globalGameDataSO.currentEnergy}!");
-
+            LevelUpSuccessfull();
         }
         else
         {
-            globalGameDataSO.failedAttempts++;
-            globalGameDataSO.successChance += 0.1f;
-            Debug.Log($"{globalGameDataSO.playerName} failed to break through. Failed attempts: {globalGameDataSO.failedAttempts}");
-            globalGameDataSO.currentEnergy -= globalGameDataSO.energyToNextLevel;
+            LevelUpNotSuccessfull();
         }
     }
 
-    void Update()
+    private void UpdateExperienceToNextLevel()
     {
-        if (globalGameDataSO.currentGameState == GlobalGameDataSO.GameState.Play)
-        {
-            AddExperience();
+        globalPlayerDataSO.energyToNextLevel += globalPlayerDataSO.playerRealmLevel * 100;
+    }
 
-        }
+    private void LevelUpSuccessfull()
+    {
+        globalPlayerDataSO.currentEnergy -= globalPlayerDataSO.energyToNextLevel;
+        globalPlayerDataSO.playerRealmLevel += 1;
+        globalPlayerDataSO.successChance = 0.2f;
+        UpdateExperienceToNextLevel();
+        Debug.Log($"{globalPlayerDataSO.characterClass.baseClassName} leveled up to level {globalPlayerDataSO.playerRealmLevel}!");
     }
+
+    private void LevelUpNotSuccessfull()
+    {
+        globalPlayerDataSO.failedAttempts++;
+        globalPlayerDataSO.successChance += 0.1f;
+        Debug.Log($"{globalPlayerDataSO.playerName} failed to break through. Failed attempts: {globalPlayerDataSO.failedAttempts}");
+        globalPlayerDataSO.currentEnergy -= globalPlayerDataSO.energyToNextLevel;
     }
+}

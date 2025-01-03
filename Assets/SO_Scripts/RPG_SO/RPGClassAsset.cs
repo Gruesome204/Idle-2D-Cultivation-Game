@@ -5,12 +5,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New RPG Class", menuName = "RPG/Player/Create Class")]
 public class RPGClassAsset : ScriptableObject
 {
-    public string className;
+    public string baseClassName;
     public int baseHealth;
     public int baseAttack;
     public int baseDefense;
-    public float attackSpeed;
-    public string specialAbility;
+    public float baseAttackSpeed;
+    public string baseSpecialAbility;
 
     public int healthPerLevel;
     public int attackPerLevel;
@@ -20,7 +20,7 @@ public class RPGClassAsset : ScriptableObject
 
 public void PerformSpecialAbility()
     {
-        Debug.Log($"{className} uses {specialAbility}!");
+        Debug.Log($"{baseClassName} uses {baseSpecialAbility}!");
         
     }
 

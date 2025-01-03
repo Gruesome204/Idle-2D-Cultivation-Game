@@ -10,43 +10,45 @@ public class ChangeGameState : MonoBehaviour
     private PlayerMovementController playerMovementScript;
     private void Awake()
     {
-
         //Set Game State upon loading the Scene
         globalGameDataSO.currentGameState = GlobalGameDataSO.GameState.Play;
-
         //Reference the Movement Script of the Player
         playerMovementScript = GameObject.FindObjectOfType<PlayerMovementController>();
-
     }
 
     private void Update()
     {
-        while(globalGameDataSO.currentGameState == GlobalGameDataSO.GameState.Pause)
 
-        //Pause game
-        if (globalGameDataSO.currentGameState == GlobalGameDataSO.GameState.Pause)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            playerMovementScript.enabled = false;
-        }
-        else if (globalGameDataSO.currentGameState == GlobalGameDataSO.GameState.Play)
-        {
-            playerMovementScript.enabled = true;
-        }
-
-
-        if (Input.GetKeyDown(KeyCode.Escape)){
-            if(globalGameDataSO.currentGameState == GlobalGameDataSO.GameState.Play)
+            switch (globalGameDataSO.currentGameState)
             {
-                globalGameDataSO.currentGameState = GlobalGameDataSO.GameState.Pause;
-                Debug.Log("Game Pause");
+                case GlobalGameDataSO.GameState.Play:
+                    globalGameDataSO.currentGameState = GlobalGameDataSO.GameState.Pause;
+                    Debug.Log("Game Pause");
+                    return;
+                case GlobalGameDataSO.GameState.Pause:
+                    globalGameDataSO.currentGameState = GlobalGameDataSO.GameState.Play;
+                    Debug.Log("Game Continue");
+                    return;
             }
-            else
-            {
-                globalGameDataSO.currentGameState = GlobalGameDataSO.GameState.Play;
-                Debug.Log("Game Continue");
-            }   
         }
-        
 
+        switch (globalGameDataSO.currentGameState)
+        {
+            case GlobalGameDataSO.GameState.Play:
+                playerMovementScript.enabled = true;
+
+                return;
+            case GlobalGameDataSO.GameState.Pause:
+                playerMovementScript.enabled = false;
+
+                return;
+            case GlobalGameDataSO.GameState.None:
+
+
+                return;
+
+        }   
     }
 }
