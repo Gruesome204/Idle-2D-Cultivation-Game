@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class NPCConversationGUIBehaviour : MonoBehaviour
 {
-
+    [SerializeField] private GlobalGameDataSO globalGameDataSO;
     [SerializeField] private Button closeGUI;
 
     private void Awake()
@@ -22,5 +22,6 @@ public class NPCConversationGUIBehaviour : MonoBehaviour
     void CloseGUI()
     {
         this.gameObject.SetActive(false);
+
     }
 }

@@ -282,6 +282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 296696d77a2d5c548828f76f4a3cf988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  globalGameDataSO: {fileID: 0}
   closeGUI: {fileID: 1017404046}
 --- !u!1 &300196088
 GameObject:
@@ -6826,6 +6827,10 @@ PrefabInstance:
       propertyPath: baseStatsData
       value: 
       objectReference: {fileID: 11400000, guid: f2d1b105b10f60242979f7e678fa73b0, type: 2}
+    - target: {fileID: 3551189376406755514, guid: 6a068a0a7cac0b547851f3cf751ce572, type: 3}
+      propertyPath: globalGameDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 800b917a9c18acc4692d75813ed1a61e, type: 2}
     - target: {fileID: 5802273736505277830, guid: 6a068a0a7cac0b547851f3cf751ce572, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.82
@@ -7094,6 +7099,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 683831953670186475, guid: 3efa89871919d79499e9e4dd92071652, type: 3}
+      propertyPath: globalGameDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 800b917a9c18acc4692d75813ed1a61e, type: 2}
     - target: {fileID: 683831953670186475, guid: 3efa89871919d79499e9e4dd92071652, type: 3}
       propertyPath: NPCConversationGUI
       value: 

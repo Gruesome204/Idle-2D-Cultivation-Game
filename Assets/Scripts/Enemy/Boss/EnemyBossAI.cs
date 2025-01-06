@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine.AI;
 
 public class EnemyBossAI : MonoBehaviour
 {
+    [SerializeField] private GlobalGameDataSO globalGameDataSO;
 
     public BaseStatsData baseStatsData;
     private Aggro aggro;
@@ -13,6 +15,7 @@ public class EnemyBossAI : MonoBehaviour
     public float moveSpeed;
     public float detectionRange = 10f;
     private bool isAggroed;
+    float distance;
     bool playerInRange;
 
     void Start()
@@ -24,7 +27,7 @@ public class EnemyBossAI : MonoBehaviour
 
     void Update()
     {
-        float distance = Vector3.Distance(player.transform.position,transform.position);
+        GetPlayerDistance();
 
         playerInRange = distance <= detectionRange;
 
@@ -50,6 +53,11 @@ public class EnemyBossAI : MonoBehaviour
 
         UpdateTarget();
 
+    }
+
+    private void GetPlayerDistance()
+    {
+        distance = Vector3.Distance(player.transform.position, transform.position);
     }
 
     void MoveTowardTarget()

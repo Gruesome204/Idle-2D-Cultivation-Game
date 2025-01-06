@@ -38,15 +38,17 @@ public class ChangeGameState : MonoBehaviour
         {
             case GlobalGameDataSO.GameState.Play:
                 playerMovementScript.enabled = true;
-
+                Time.timeScale = 1;
                 return;
+
             case GlobalGameDataSO.GameState.Pause:
                 playerMovementScript.enabled = false;
-
+                Time.timeScale = 0;
                 return;
-            case GlobalGameDataSO.GameState.None:
 
-
+            case GlobalGameDataSO.GameState.UI:
+                playerMovementScript.enabled = false;
+                Time.timeScale = 0;
                 return;
 
         }   
