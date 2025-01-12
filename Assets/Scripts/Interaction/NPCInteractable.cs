@@ -10,7 +10,7 @@ public class NPCInteractable: MonoBehaviour, IClickable
     public void Interact()
     {
             Debug.Log("Test NPC Interaction");
-            NPCConversationGUI.gameObject.SetActive(true);
+            NPCConversationGUI.SetActive(true);
 
           
     }

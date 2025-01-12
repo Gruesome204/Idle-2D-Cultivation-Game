@@ -4,32 +4,45 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;   
 
-public class EnemyBossAI : MonoBehaviour
+public class MeeleEnemyBehaviour: MonoBehaviour
 {
     [SerializeField] private GlobalGameDataSO globalGameDataSO;
 
     public BaseStatsData baseStatsData;
     private Aggro aggro;
-    private GameObject currentTarget;
+    [SerializeField] private GameObject currentTarget;
     public GameObject player;
-    public float moveSpeed;
-    public float detectionRange = 10f;
     private bool isAggroed;
-    float distance;
+    public float moveSpeed;
+    public float detectionRange;
+    [SerializeField]float playerDistance;
     bool playerInRange;
+    public float attackRange;
+    bool playerInAttackRange;
 
     void Start()
     {
         player = FindObjectOfType<PlayerCharakter>().transform.gameObject;
-        moveSpeed = baseStatsData.baseSpeed;
         aggro = GetComponent<Aggro>();
-    }   
+        InitializeBehaviour();
+    }
+    void InitializeBehaviour()
+    {
+        moveSpeed = baseStatsData.baseSpeed;
+        detectionRange = baseStatsData.baseDetectionRange;
+        attackRange = baseStatsData.baseAttackRange;
+    }
 
     void Update()
     {
+        IsPlayerInDetectionRange();
         GetPlayerDistance();
+        if (currentTarget != null)
+        {
+            IsPlayerInAttackRange();   
+        }
 
-        playerInRange = distance <= detectionRange;
+        
 
         isAggroed = aggro != null && aggro.GetHighestAggroTarget() != null;
 
@@ -53,11 +66,25 @@ public class EnemyBossAI : MonoBehaviour
 
         UpdateTarget();
 
+        if(playerInAttackRange)
+        {
+            Debug.Log("Attack Player");
+            currentTarget.GetComponent<IDamageable>().TakeDamage(baseStatsData.baseDamage);
+        }
+    }
+    private void IsPlayerInDetectionRange()
+    {
+        Debug.Log("Player in Detection Range");
+        playerInRange = playerDistance <= detectionRange;
+    }
+    private void IsPlayerInAttackRange()
+    {
+        playerInAttackRange = playerDistance <= attackRange;
     }
 
     private void GetPlayerDistance()
     {
-        distance = Vector3.Distance(player.transform.position, transform.position);
+        playerDistance = Vector3.Distance(player.transform.position, transform.position);
     }
 
     void MoveTowardTarget()

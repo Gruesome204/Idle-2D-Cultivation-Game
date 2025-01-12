@@ -10,11 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 98f99bff5118750429698072a153b6c7, type: 3}
-  m_Name: PlayerInventory
+  m_Name: GlobalPlayerInventorySO
   m_EditorClassIdentifier: 
-  inventorySlots:
-  - itemData: {fileID: 11400000, guid: ad1b69121690b41439bcf26bbf7962f7, type: 2}
-    quantity: 5
-  - itemData: {fileID: 11400000, guid: 645282b9501872d4d8b4bbf942d9e079, type: 2}
-    quantity: 3
-  maxSlots: 20
+  herbs: 0
+  spiritualCrystals: 0
+  ore: 0

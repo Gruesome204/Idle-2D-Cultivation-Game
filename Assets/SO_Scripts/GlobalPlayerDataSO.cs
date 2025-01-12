@@ -94,12 +94,6 @@ public class GlobalPlayerDataSO : ScriptableObject
     [Header("Player Techniques")]
     [SerializeField] public int currentInsight;
 
-    [Header("Player Ressource Inventory")]
-    [SerializeField] public int herbs;
-    [SerializeField] public int spiritualCrystals;
-    [SerializeField] public int ore;
-
-
 
     public void ResetData()
     {

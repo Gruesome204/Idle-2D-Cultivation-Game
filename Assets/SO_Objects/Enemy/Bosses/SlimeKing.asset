@@ -21,8 +21,8 @@ MonoBehaviour:
   baseAttackSpeed: 1
   baseCritChance: 1
   baseDamageMultiplier: 1
-  baseAttackRange: 1
-  baseDetectionRange: 10
+  baseAttackRange: 3
+  baseDetectionRange: 5
   detectionTime: 1
   baseMoveRange: 15
   baseStatusResistance: 0

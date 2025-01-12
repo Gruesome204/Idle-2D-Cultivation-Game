@@ -6,7 +6,7 @@ using System;
 using System.Xml.Linq;
 using Unity.VisualScripting;
 
-public class PlayerCharakter : MonoBehaviour
+public class PlayerCharakter : MonoBehaviour, IDamageable
 {
     [SerializeField] private GlobalPlayerDataSO globalPlayerDataSO;
     [SerializeField] private GlobalGameDataSO globalGameDataSO;

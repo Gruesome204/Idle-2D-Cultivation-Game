@@ -8,7 +8,6 @@ using UnityEngine;
 public class GlobalGameDataSO : ScriptableObject
 {
 
-
     [Header("WorldEvents")]
     [SerializeField] public bool worldEventsActive;
     [SerializeField] public int worldEventIntervall;

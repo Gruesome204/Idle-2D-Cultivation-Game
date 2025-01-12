@@ -5,13 +5,13 @@ using UnityEngine;
 public class RessourceInteractable : MonoBehaviour, IClickable
 {
 
-    [SerializeField] private GlobalPlayerDataSO globalPlayerDataSO;
     [SerializeField] private GlobalGameDataSO globalGameDataSO;
+    [SerializeField] private GlobalPlayerInventorySO globalPlayerInventorySO;
 
     public void Interact()
     {
         int crystalNum = Random.Range(1, 4);
-        globalPlayerDataSO.spiritualCrystals += crystalNum;
+        globalPlayerInventorySO.spiritualCrystals += crystalNum;
         Debug.Log($"Test Ressource Interaction, Player recieves: {crystalNum}" );
     }
 
