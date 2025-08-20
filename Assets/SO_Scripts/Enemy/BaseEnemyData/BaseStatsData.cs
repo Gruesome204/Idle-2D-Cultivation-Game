@@ -4,6 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewBaseStatsData", menuName = "RPG/BaseEnemyStatsData/CreateNewBaseStatsData")]
 public class BaseStatsData : ScriptableObject
 {
+	
     [Header("Core Stats")]
     public string baseName;
     public int baseHealth;
